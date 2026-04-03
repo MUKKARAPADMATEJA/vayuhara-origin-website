@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAYUHARA ORIGIN | Premium Digital Creative Agency</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Sticky Navbar -->
+    <nav id="main-nav">
+        <a href="#hero" class="logo">
+            <img src="assets/logo.jpeg" alt="VAYUHARA ORIGIN">
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section Redesign -->
+    <section class="hero" id="hero">
+        <div class="hero-grid">
+            <div class="hero-content reveal">
+                <div style="width: 50px; height: 3px; background: var(--accent); margin-bottom: 2rem;"></div>
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem;">
+                    <span class="text-mask"><span class="text-reveal">Crafting Premium</span></span><br>
+                    <span class="text-mask"><span class="text-reveal" style="color: var(--accent);">Digital Experiences</span></span>
+                </h1>
+                <p style="font-size: 1.25rem; color: var(--text-light); margin-bottom: 3rem; max-width: 600px;">We design brands, build modern websites, and create creative digital excellence for the modern era.</p>
+                <div class="cta-group">
+                    <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <a href="#portfolio" class="btn btn-outline" style="border: 2px solid var(--primary); color: var(--primary);">View Portfolio</a>
+                </div>
+            </div>
+            <!-- Right Side: World-Class Brand Mark -->
+            <div class="hero-visual reveal float-infinite">
+                <div class="about-logo-card" style="height: 100%; border-radius: 40px; border: 1px solid rgba(0,0,0,0.03);">
+                    <img src="assets/logo.jpeg" alt="VAYUHARA ORIGIN Logo" class="about-logo-img" style="max-width: 450px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Services Section (Agency Layout) -->
+    <section class="services" id="services" style="padding: 100px 8%; background: var(--white);">
+        <div class="section-head reveal" style="text-align: center; margin-bottom: 80px;">
+            <h2 style="font-size: 2.8rem; margin-bottom: 1rem;">
+                <span class="text-mask"><span class="text-reveal">Our Services</span></span>
+            </h2>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card reveal delay-1">
+                <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+                <h3>Logo Design</h3>
+                <p>Iconic visual identities that capture your brand's essence and luxury status.</p>
+            </div>
+            <div class="service-card reveal delay-2">
+                <div class="service-icon"><i class="fas fa-palette"></i></div>
+                <h3>Graphic Design</h3>
+                <p>Stunning visual assets for digital and print marketing excellence.</p>
+            </div>
+            <div class="service-card reveal delay-3">
+                <div class="service-icon"><i class="fas fa-video"></i></div>
+                <h3>Video Editing</h3>
+                <p>Professional video storytelling and high-end cinematic content quality.</p>
+            </div>
+            <div class="service-card reveal delay-4">
+                <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>Art Works</h3>
+                <p>Bespoke digital illustrations and visual masterpieces for your creative brand.</p>
+            </div>
+        </div>
+
+        <div class="services-disclaimer reveal" style="text-align: center; margin-top: 80px; opacity: 0.6; font-size: 0.85rem; color: var(--text-light); max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            We may use AI tools to enhance creativity, quality, and efficiency across all services.
+        </div>
+    </section>
+
+
+    <!-- Portfolio Section (Interactive Folder System) -->
+    <section class="portfolio reveal" id="portfolio">
+        <div class="section-head">
+            <h2>Our Work</h2>
+            <div class="accent-line"></div>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-card reveal folder-clickable delay-1" onclick="openProjectFolder('Logo Design')">
+                <i class="fas fa-folder-open"></i>
+                <h3>Logo Design</h3>
+                <span class="folder-status">Click to Open</span>
+            </div>
+            <div class="portfolio-card reveal folder-clickable delay-2" onclick="openProjectFolder('Graphic Design')">
+                <i class="fas fa-folder-open"></i>
+                <h3>Graphic Design</h3>
+                <span class="folder-status">Click to Open</span>
+            </div>
+            <div class="portfolio-card reveal folder-clickable delay-3" onclick="openProjectFolder('Video Editing')">
+                <i class="fas fa-folder-open"></i>
+                <h3>Video Editing</h3>
+                <span class="folder-status">Click to Open</span>
+            </div>
+            <div class="portfolio-card reveal folder-clickable delay-4" onclick="openProjectFolder('Art Works')">
+                <i class="fas fa-folder-open"></i>
+                <h3>Art Works</h3>
+                <span class="folder-status">Click to Open</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section (Final Professional Layout) -->
+    <section class="about reveal" id="about" style="padding: 100px 8%; background: var(--bg-soft);">
+        <div class="hero-grid" style="align-items: center; gap: 60px;">
+            <div class="about-text" style="text-align: left;">
+                <div style="width: 40px; height: 3px; background: var(--accent); margin-bottom: 2rem;"></div>
+                <h2 style="font-size: 2.8rem; margin-bottom: 2.5rem; line-height: 1.2;">About <span style="color: var(--accent);">VAYUHARA ORIGIN</span></h2>
+                
+                <p style="font-size: 1.15rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.8;">VAYUHARA ORIGIN is a modern creative startup focused on delivering high-quality digital solutions for brands, creators, and businesses. We specialize in combining creativity, strategy, and technology to build impactful digital experiences.</p>
+                
+                <p style="font-size: 1.15rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.8;">As a growing startup, our mission is to help brands establish a strong digital presence through thoughtful design, powerful visuals, and innovative solutions. We believe in quality, speed, and delivering results that elevate brands to the next level.</p>
+                
+                <p style="font-size: 1.15rem; color: var(--text-light); line-height: 1.8;">From branding and logo design to website development and creative artworks, we provide end-to-end creative services tailored for modern businesses.</p>
+            </div>
+
+            <div class="about-visual reveal">
+                <div class="about-logo-card">
+                    <img src="assets/logo.jpeg" alt="VAYUHARA ORIGIN Logo" class="about-logo-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Process Section (Horizontal Premium Timeline) -->
+    <section class="process reveal" id="process" style="padding: 120px 8%; background: var(--white);">
+        <div class="section-head" style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 2.8rem;">Our Process</h2>
+            <div class="accent-line"></div>
+        </div>
+        <div class="process-horizontal">
+            <div class="process-step reveal">
+                <div class="step-number">01</div>
+                <h3>Discovery</h3>
+                <p>Establishing digital strategy and high-end project goals.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">02</div>
+                <h3>Design</h3>
+                <p>Crafting initial luxury concepts and premium visual strategy.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">03</div>
+                <h3>Development</h3>
+                <p>Building world-class digital assets with technical precision.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">04</div>
+                <h3>Launch</h3>
+                <p>Delivering high-quality final content and brand deployment.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Brand CTA Section -->
+    <section class="cta-section reveal">
+        <h2 style="font-weight: 800;">Ready to Build Your Brand?</h2>
+        <p>Join our growing network of clients and transform your brand with world-class digital excellence.</p>
+        <a href="#contact" class="btn btn-primary" style="padding: 1.2rem 3rem;">Contact Us</a>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="contact reveal" id="contact">
+        <div class="section-head">
+            <h2>Reach Us</h2>
+            <p style="margin-top: 1rem; color: var(--text-light); max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">Let's discuss your ideas and bring them to life.</p>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="contact-grid reveal">
+            <!-- Left Side: Contact Info & Services -->
+            <div class="contact-info">
+                <div class="info-group">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-envelope"></i> vayuharaorigin@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +91 7013843139</p>
+                </div>
+                
+                <div class="info-group">
+                    <h3>Services</h3>
+                    <ul class="contact-serviceslist">
+                        <li><i class="fas fa-check-circle"></i> Logo Design</li>
+                        <li><i class="fas fa-check-circle"></i> Artworks</li>
+                        <li><i class="fas fa-check-circle"></i> Video Editing</li>
+                        <li><i class="fas fa-check-circle"></i> Branding</li>
+                        <li><i class="fas fa-check-circle"></i> Digital Design</li>
+                    </ul>
+                </div>
+
+                <p class="ai-disclaimer">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    We may use AI tools to enhance quality, creativity, and efficiency across any of the above services.
+                </p>
+            </div>
+
+            <!-- Right Side: Contact Form -->
+            <div class="contact-form-card">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Message</label>
+                        <textarea class="form-control" name="message" rows="5" placeholder="Let's build something world-class..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Inquiry <i class="fas fa-paper-plane" style="margin-left: 10px;"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Premium Footer Redesign -->
+    <footer class="footer-premium">
+        <div class="footer-inner">
+            <div class="footer-main-grid">
+                <!-- Column 1: Brand -->
+                <div class="footer-brand-col">
+                    <div class="logo-wrap">
+                        <img src="assets/logo.jpeg" alt="VAYUHARA ORIGIN Logo">
+                    </div>
+                    <p class="brand-desc">Crafting high-end digital experiences for the modern era. We empower businesses through technical and creative excellence.</p>
+                    <div class="brand-socials">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Explore -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-title">EXPLORE</h4>
+                    <ul class="footer-nav-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Our Work</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-title">LEGAL</h4>
+                    <ul class="footer-nav-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom-bar">
+                <div class="footer-bottom-divider"></div>
+                <p>&copy; 2026 VAYUHARA ORIGIN Private Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <!-- Project Folder Modal (Gallery) -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProjectFolder()">&times;</button>
+            <div class="modal-header">
+                <h2 id="modal-title">Category Title</h2>
+                <div class="accent-line" style="margin: 1rem 0;"></div>
+            </div>
+            <div class="modal-body" id="modal-grid">
+                <!-- Dynamic Content (Photos/Videos) will load here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

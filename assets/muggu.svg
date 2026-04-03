@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <g fill="none" stroke="#F59E0B" stroke-width="1.5" opacity="0.6" filter="url(#softGlow)">
+    <!-- Central Muggu Structure (Kolam Style) -->
+    <path d="M400,100 Q450,50 500,100 T600,100 Q650,50 700,100 T700,200 Q750,250 700,300 T700,400 Q750,450 700,500 T700,600 Q750,650 700,700 T600,700 Q550,750 500,700 T400,700 Q350,750 300,700 T200,700 Q150,750 100,700 T100,600 Q50,550 100,500 T100,400 Q50,350 100,300 T100,200 Q50,150 100,100 T200,100 Q250,50 300,100 T400,100 Z" stroke-dasharray="1000" stroke-dashoffset="0" />
+    
+    <!-- Inner Professional Loops -->
+    <circle cx="400" cy="400" r="50" stroke-width="1" />
+    <circle cx="400" cy="250" r="30" stroke-width="0.5" />
+    <circle cx="400" cy="550" r="30" stroke-width="0.5" />
+    <circle cx="250" cy="400" r="30" stroke-width="0.5" />
+    <circle cx="550" cy="400" r="30" stroke-width="0.5" />
+    
+    <!-- Geometric Dot Pattern -->
+    <g fill="#F59E0B" stroke="none">
+      <circle cx="400" cy="400" r="3"/>
+      <circle cx="400" cy="300" r="2"/>
+      <circle cx="400" cy="500" r="2"/>
+      <circle cx="300" cy="400" r="2"/>
+      <circle cx="500" cy="400" r="2"/>
+      <circle cx="329" cy="329" r="2"/>
+      <circle cx="471" cy="471" r="2"/>
+      <circle cx="329" cy="471" r="2"/>
+      <circle cx="471" cy="329" r="2"/>
+    </g>
+    
+    <!-- Outer Sacred Geometry Ties -->
+    <path d="M400,150 L650,400 L400,650 L150,400 Z" stroke-width="0.5" stroke-dasharray="5,5" />
+  </g>
+</svg>
