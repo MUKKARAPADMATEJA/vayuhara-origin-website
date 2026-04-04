@@ -1,14 +1,43 @@
-// Sticky Navbar
+// Floating Navbar scroll behaviour
 const nav = document.getElementById('main-nav');
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+const navLinksItems = document.querySelectorAll('.nav-links a');
+
 window.addEventListener('scroll', () => {
     if (nav) {
-        if (window.scrollY > 50) {
-            nav.classList.add('sticky');
+        if (window.scrollY > 30) {
+            nav.classList.add('scrolled');
         } else {
-            nav.classList.remove('sticky');
+            nav.classList.remove('scrolled');
         }
     }
 });
+
+// Toggle Mobile Menu
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-active');
+        const icon = mobileMenuBtn.querySelector('i');
+        if (navLinks.classList.contains('nav-active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Close menu when a link is clicked
+    navLinksItems.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('nav-active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+}
 
 // Scroll Reveal Logic (Enhanced for Back Animations)
 const revealElements = document.querySelectorAll('.reveal');
@@ -16,7 +45,7 @@ const revealOnScroll = () => {
     revealElements.forEach(el => {
         const rect = el.getBoundingClientRect();
         const triggerPoint = window.innerHeight * 0.9;
-        
+
         if (rect.top < triggerPoint && rect.bottom > 0) {
             el.classList.add('active');
         } else {
@@ -34,7 +63,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
-        
+
         if (targetElement) {
             window.scrollTo({
                 top: targetElement.offsetTop - 80,
@@ -60,10 +89,10 @@ const projectData = {
 function openProjectFolder(category) {
     if (!modal) return;
     modalTitle.innerText = category;
-    modalGrid.innerHTML = ''; 
+    modalGrid.innerHTML = '';
 
     const works = projectData[category] || [];
-    
+
     if (works.length === 0) {
         modalGrid.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 100px 0;">
@@ -74,8 +103,8 @@ function openProjectFolder(category) {
     } else {
         works.forEach(work => {
             const itemDiv = document.createElement('div');
-            itemDiv.className = 'work-item reveal active'; 
-            
+            itemDiv.className = 'work-item reveal active';
+
             if (work.type === 'img') {
                 itemDiv.innerHTML = `<img src="${work.src}" alt="Work" loading="lazy">`;
             } else {
@@ -87,7 +116,7 @@ function openProjectFolder(category) {
 
     modal.style.display = 'flex';
     setTimeout(() => modal.classList.add('active'), 10);
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
 }
 
 function closeProjectFolder() {
@@ -99,7 +128,7 @@ function closeProjectFolder() {
     }, 300);
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
         closeProjectFolder();
     }
@@ -108,9 +137,9 @@ window.onclick = function(event) {
 // ============================================================
 // EmailJS Configuration — Fill in your keys from emailjs.com
 // ============================================================
-const EMAILJS_PUBLIC_KEY   = "YOUR_PUBLIC_KEY";   // Step 1
-const EMAILJS_SERVICE_ID   = "YOUR_SERVICE_ID";   // Step 2
-const EMAILJS_TEMPLATE_ID  = "YOUR_TEMPLATE_ID";  // Step 3
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";   // Step 1
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";   // Step 2
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";  // Step 3
 
 // Initialise EmailJS with your public key
 emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -136,10 +165,10 @@ if (contactForm) {
 
         // Collect form values
         const templateParams = {
-            from_name:    contactForm.querySelector('[name="name"]').value,
-            from_email:   contactForm.querySelector('[name="email"]').value,
-            message:      contactForm.querySelector('[name="message"]').value,
-            to_email:     'vayuharaorigin@gmail.com'
+            from_name: contactForm.querySelector('[name="name"]').value,
+            from_email: contactForm.querySelector('[name="email"]').value,
+            message: contactForm.querySelector('[name="message"]').value,
+            to_email: 'vayuharaorigin@gmail.com'
         };
 
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
