@@ -117,6 +117,17 @@ nav.sticky .logo img {
 .nav-links a:hover::after {
     opacity: 1;
 }
+@media (max-width: 768px) {
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .logo-wrap img {
+    height: 50px;
+  }
+}
 
 /* Section Templates */
 section {
