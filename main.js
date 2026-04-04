@@ -1,0 +1,167 @@
+// Sticky Navbar
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+    if (nav) {
+        if (window.scrollY > 50) {
+            nav.classList.add('sticky');
+        } else {
+            nav.classList.remove('sticky');
+        }
+    }
+});
+
+// Scroll Reveal Logic (Enhanced for Back Animations)
+const revealElements = document.querySelectorAll('.reveal');
+const revealOnScroll = () => {
+    revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const triggerPoint = window.innerHeight * 0.9;
+        
+        if (rect.top < triggerPoint && rect.bottom > 0) {
+            el.classList.add('active');
+        } else {
+            // Symmetrical back-animation removal
+            el.classList.remove('active');
+        }
+    });
+};
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll(); // Initial check
+
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Portfolio Modal Logic
+const modal = document.getElementById('project-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalGrid = document.getElementById('modal-grid');
+
+// Empty for now as requested
+const projectData = {
+    'Logo Design': [],
+    'Graphic Design': [],
+    'Video Editing': [],
+    'Art Works': []
+};
+
+function openProjectFolder(category) {
+    if (!modal) return;
+    modalTitle.innerText = category;
+    modalGrid.innerHTML = ''; 
+
+    const works = projectData[category] || [];
+    
+    if (works.length === 0) {
+        modalGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 100px 0;">
+                <i class="fas fa-folder-open" style="font-size: 4rem; color: var(--accent); opacity: 0.2; margin-bottom: 2rem;"></i>
+                <p style="font-size: 1.25rem; color: var(--text-light); opacity: 0.6;">This folder is empty for now...</p>
+            </div>
+        `;
+    } else {
+        works.forEach(work => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'work-item reveal active'; 
+            
+            if (work.type === 'img') {
+                itemDiv.innerHTML = `<img src="${work.src}" alt="Work" loading="lazy">`;
+            } else {
+                itemDiv.innerHTML = `<video src="${work.src}" controls muted></video>`;
+            }
+            modalGrid.appendChild(itemDiv);
+        });
+    }
+
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('active'), 10);
+    document.body.style.overflow = 'hidden'; 
+}
+
+function closeProjectFolder() {
+    if (!modal) return;
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        closeProjectFolder();
+    }
+}
+
+// ============================================================
+// EmailJS Configuration — Fill in your keys from emailjs.com
+// ============================================================
+const EMAILJS_PUBLIC_KEY   = "YOUR_PUBLIC_KEY";   // Step 1
+const EMAILJS_SERVICE_ID   = "YOUR_SERVICE_ID";   // Step 2
+const EMAILJS_TEMPLATE_ID  = "YOUR_TEMPLATE_ID";  // Step 3
+
+// Initialise EmailJS with your public key
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+// Contact Form Submission
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const button = contactForm.querySelector('button');
+        const originalBtnHTML = button.innerHTML;
+
+        button.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+        button.disabled = true;
+
+        // Check if keys are filled
+        if (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY" || EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" || EMAILJS_TEMPLATE_ID === "YOUR_TEMPLATE_ID") {
+            alert("Please set up your EmailJS keys in main.js first! See the instructions provided by the AI.");
+            button.innerHTML = originalBtnHTML;
+            button.disabled = false;
+            return;
+        }
+
+        // Collect form values
+        const templateParams = {
+            from_name:    contactForm.querySelector('[name="name"]').value,
+            from_email:   contactForm.querySelector('[name="email"]').value,
+            message:      contactForm.querySelector('[name="message"]').value,
+            to_email:     'vayuharaorigin@gmail.com'
+        };
+
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+            .then(() => {
+                button.innerHTML = 'Inquiry Sent! <i class="fas fa-check-circle"></i>';
+                button.style.background = '#10B981';
+                contactForm.reset();
+                setTimeout(() => {
+                    button.innerHTML = originalBtnHTML;
+                    button.style.background = '';
+                    button.disabled = false;
+                }, 5000);
+            })
+            .catch((err) => {
+                console.error('EmailJS error:', err);
+                button.innerHTML = 'Failed — Try Again <i class="fas fa-exclamation-triangle"></i>';
+                button.style.background = '#EF4444';
+                setTimeout(() => {
+                    button.innerHTML = originalBtnHTML;
+                    button.style.background = '';
+                    button.disabled = false;
+                }, 3000);
+            });
+    });
+}
