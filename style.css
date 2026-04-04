@@ -574,9 +574,6 @@ section {
    Premium Footer Redesign (#071426 Luxury)
    ========================================================================== */
 .footer-premium {
-  position: relative;
-}
-.footer-premium {
     background: #071426;
     padding: 80px 8% 30px;
     color: #FFFFFF;
