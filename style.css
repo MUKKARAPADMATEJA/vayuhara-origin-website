@@ -574,6 +574,20 @@ section {
    Premium Footer Redesign (#071426 Luxury)
    ========================================================================== */
 .footer-premium {
+  position: relative;
+}
+
+.footer-gopuram {
+  position: absolute;
+  right: 40px;
+  top: 30%;
+}
+
+.footer-gopuram img {
+  height: 140px;
+  opacity: 0.15;
+}
+.footer-premium {
     background: #071426;
     padding: 80px 8% 30px;
     color: #FFFFFF;
