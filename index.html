@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VAYUHARA ORIGIN | Premium Digital Creative Agency</title>
     <!-- Favicon Icon -->
-    <link rel="icon" type="image/jpeg" href="/final logo 1.jpeg">
+    <link rel="icon" type="image/jpeg" href="final logo 1.jpeg">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Fonts -->
@@ -19,41 +19,52 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-    <!-- Sticky Navbar -->
-    <nav id="main-nav">
+    <!-- Floating Glassmorphism Pill Navbar -->
+    <nav id="main-nav" class="pill-nav">
         <a href="#hero" class="logo">
-            <img src="/final logo 1.jpeg" alt="VAYUHARA ORIGIN">
+            <img src="final logo 1.jpeg" alt="VAYUHARA ORIGIN">
         </a>
         
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#portfolio">Works</a></li>
+            <li><a href="#core">Core</a></li>
             <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact Us</a></li>
         </ul>
-    </nav>
+        
+        <a href="#contact" class="btn btn-primary nav-cta">Get Started</a>
 
-    <!-- Hero Section Redesign -->
-    <section class="hero" id="hero">
-        <div class="hero-grid">
-            <div class="hero-content reveal">
-                <div style="width: 50px; height: 3px; background: var(--accent); margin-bottom: 2rem;"></div>
-                <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem;">
-                    <span class="text-mask"><span class="text-reveal">Crafting Premium</span></span><br>
-                    <span class="text-mask"><span class="text-reveal" style="color: var(--accent);">Digital Experiences</span></span>
-                </h1>
-                <p style="font-size: 1.25rem; color: var(--text-light); margin-bottom: 3rem; max-width: 600px;">We design brands, build modern websites, and create creative digital excellence for the modern era.</p>
-                <div class="cta-group">
-                    <a href="#services" class="btn btn-primary">Explore Services</a>
-                    <a href="#portfolio" class="btn btn-outline" style="border: 2px solid var(--primary); color: var(--primary);">View Portfolio</a>
-                </div>
-            </div>
-            <!-- Right Side: World-Class Brand Mark -->
-            <div class="hero-visual reveal float-infinite">
-                <div class="about-logo-card" style="height: 100%; border-radius: 40px; border: 1px solid rgba(0,0,0,0.03);">
-                    <img src="/logoooooooo.jpeg" alt="VAYUHARA ORIGIN Logo" class="about-logo-img" style="max-width: 500px;">
-                </div>
+        <div class="mobile-menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay">
+        <button class="close-menu" id="close-menu">&times;</button>
+        <ul class="mobile-links">
+            <li><a href="#hero" class="mobile-link">Home</a></li>
+            <li><a href="#services" class="mobile-link">Services</a></li>
+            <li><a href="#portfolio" class="mobile-link">Works</a></li>
+            <li><a href="#core" class="mobile-link">Core</a></li>
+            <li><a href="#about" class="mobile-link">About Us</a></li>
+            <li><a href="#contact" class="mobile-link">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Centered Hero Section -->
+    <section class="hero scattered-hero" id="hero">
+        <div class="hero-content-center reveal">
+            <div class="hero-chip">Premium Digital Agency</div>
+            <h1 class="hero-title">
+                <span class="text-mask"><span class="text-reveal">Crafting Premium</span></span><br>
+                <span class="text-mask"><span class="text-reveal" style="color: var(--accent);">Digital Experiences</span></span>
+            </h1>
+            <p class="hero-subtitle">We design brands, build modern websites, and create creative digital excellence for the modern era.</p>
+            <div class="cta-group center-cta">
+                <a href="#services" class="btn btn-primary">Explore Services</a>
+                <a href="#portfolio" class="btn btn-outline" style="border: 2px solid var(--primary); color: var(--primary);">View Portfolio</a>
             </div>
         </div>
     </section>
@@ -136,27 +147,61 @@
 
     <!-- About Section (Final Professional Layout) -->
     <section class="about reveal" id="about" style="padding: 100px 8%; background: var(--bg-soft);">
-        <div class="hero-grid" style="align-items: center; gap: 60px;">
-            <div class="about-text" style="text-align: left;">
-                <div style="width: 40px; height: 3px; background: var(--accent); margin-bottom: 2rem;"></div>
-                <h2 style="font-size: 2.8rem; margin-bottom: 2.5rem; line-height: 1.2;">About <span style="color: var(--accent);">VAYUHARA ORIGIN</span></h2>
-                
-                <p style="font-size: 1.15rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.8;">VAYUHARA ORIGIN is a growing startup providing creative digital solutions to help businesses build a strong online presence. We specialize in website development, branding, graphic design, social media creatives, and video editing, delivering clean and modern results tailored for startups and growing brands.</p>
-                
-                <p style="font-size: 1.15rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.8;">Founded by MUKKARA PADMA TEJA and MUKKARA YASHWANTH, our mission is to support businesses with reliable, affordable, and professional digital services that help them grow with confidence..</p>
-                
-                <p style="font-size: 1.15rem; color: var(--text-light); line-height: 1.8;">
-📩 Business enquiries: vayuharaorigin@gmail.com</p>
+        <div class="about-text" style="text-align: center; max-width: 900px; margin: 0 auto;">
+            <div class="accent-line" style="margin-bottom: 2rem;"></div>
+            <h2 style="font-size: 2.8rem; margin-bottom: 2.5rem; line-height: 1.2;">About <span style="color: var(--accent);">VAYUHARA ORIGIN</span></h2>
+            
+            <p style="font-size: 1.15rem; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.8;">VAYUHARA ORIGIN is a growing startup providing creative digital solutions to help businesses build a strong online presence. We specialize in website development, branding, graphic design, social media creatives, and video editing, delivering clean and modern results tailored for startups and growing brands.</p>
+            
+            <p style="font-size: 1.15rem; color: var(--text-light); margin-bottom: 2.5rem; line-height: 1.8;">Founded by MUKKARA PADMA TEJA and MUKKARA YASHWANTH, our mission is to support businesses with reliable, affordable, and professional digital services that help them grow with confidence.</p>
+            
+            <p style="font-size: 1.15rem; color: var(--primary); font-weight: 600; line-height: 1.8; background: var(--white); padding: 15px 30px; border-radius: 50px; display: inline-block; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+                <i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i> Business enquiries: vayuharaorigin@gmail.com
+            </p>
+        </div>
+    </section>
+
+    <!-- Core Team Section -->
+    <section class="core-team reveal" id="core" style="padding: 100px 8%; background: var(--bg-white);">
+        <div class="section-head reveal" style="text-align: center; margin-bottom: 80px;">
+            <h2 style="font-size: 2.8rem; margin-bottom: 1rem;">
+                <span class="text-mask"><span class="text-reveal">Our Core</span></span>
+            </h2>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card reveal delay-1">
+                <div class="team-img-wrapper">
+                    <img src="founder.png" alt="Mukkara Padma Teja">
+                </div>
+                <div class="team-info">
+                    <h3>Mukkara Padma Teja</h3>
+                    <p class="team-role">Founder</p>
+                </div>
             </div>
 
-            <div class="about-visual reveal">
-                <div class="about-logo-card">
-                    <img src="/logoooooooo.jpeg" alt="VAYUHARA ORIGIN Logo" class="about-logo-img">
+            <div class="team-card reveal delay-2">
+                <div class="team-img-wrapper">
+                    <img src="cofounder.png" alt="Mukkara Yashwanth">
+                </div>
+                <div class="team-info">
+                    <h3>Mukkara Yashwanth</h3>
+                    <p class="team-role">Co-Founder</p>
+                </div>
+            </div>
+
+            <div class="team-card reveal delay-3">
+                <div class="team-img-wrapper">
+                    <img src="smm.png" alt="Director">
+                </div>
+                <div class="team-info">
+                    <h3>Mukkara Divya Sree</h3>
+                    <p class="team-role">Director</p>
                 </div>
             </div>
         </div>
     </section>
-
 
     <!-- Process Section (Horizontal Premium Timeline) -->
     <section class="process reveal" id="process" style="padding: 120px 8%; background: var(--white);">
@@ -260,7 +305,7 @@
                 <!-- Column 1: Brand -->
                 <div class="footer-brand-col">
                     <div class="logo-wrap">
-                        <img src="/final logo 1.jpeg" alt="VAYUHARA ORIGIN Logo">
+                        <img src="final logo 1.jpeg" alt="VAYUHARA ORIGIN Logo">
                     </div>
                     <p class="brand-desc">Crafting high-end digital experiences for the modern era. We empower businesses through technical and creative excellence.</p>
                     <div class="brand-socials">
@@ -277,6 +322,7 @@
                         <li><a href="#hero">Home</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Our Work</a></li>
+                        <li><a href="#core">Core</a></li>
                         <li><a href="#about">About Us</a></li>
                     </ul>
                 </div>

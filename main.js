@@ -10,6 +10,31 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Mobile Menu Logic
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-overlay');
+const closeMenuBtn = document.getElementById('close-menu');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+if (mobileMenuBtn && mobileOverlay && closeMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenuBtn.addEventListener('click', () => {
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+}
+
 // Scroll Reveal Logic (Enhanced for Back Animations)
 const revealElements = document.querySelectorAll('.reveal');
 const revealOnScroll = () => {
