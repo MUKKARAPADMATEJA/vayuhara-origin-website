@@ -130,17 +130,7 @@ window.onclick = function(event) {
     }
 }
 
-// ============================================================
-// EmailJS Configuration — Fill in your keys from emailjs.com
-// ============================================================
-const EMAILJS_PUBLIC_KEY   = "YOUR_PUBLIC_KEY";   // Step 1
-const EMAILJS_SERVICE_ID   = "YOUR_SERVICE_ID";   // Step 2
-const EMAILJS_TEMPLATE_ID  = "YOUR_TEMPLATE_ID";  // Step 3
-
-// Initialise EmailJS with your public key
-emailjs.init(EMAILJS_PUBLIC_KEY);
-
-// Contact Form Submission
+// Contact Form Submission (Using FormSubmit.co - No API key needed)
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -151,24 +141,19 @@ if (contactForm) {
         button.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
         button.disabled = true;
 
-        // Check if keys are filled
-        if (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY" || EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" || EMAILJS_TEMPLATE_ID === "YOUR_TEMPLATE_ID") {
-            alert("Please set up your EmailJS keys in main.js first! See the instructions provided by the AI.");
-            button.innerHTML = originalBtnHTML;
-            button.disabled = false;
-            return;
-        }
-
-        // Collect form values
-        const templateParams = {
-            from_name:    contactForm.querySelector('[name="name"]').value,
-            from_email:   contactForm.querySelector('[name="email"]').value,
-            message:      contactForm.querySelector('[name="message"]').value,
-            to_email:     'vayuharaorigin@gmail.com'
-        };
-
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-            .then(() => {
+        // Collect form data
+        const formData = new FormData(contactForm);
+        
+        // Submit via Fetch
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
                 button.innerHTML = 'Inquiry Sent! <i class="fas fa-check-circle"></i>';
                 button.style.background = '#10B981';
                 contactForm.reset();
@@ -177,16 +162,19 @@ if (contactForm) {
                     button.style.background = '';
                     button.disabled = false;
                 }, 5000);
-            })
-            .catch((err) => {
-                console.error('EmailJS error:', err);
-                button.innerHTML = 'Failed — Try Again <i class="fas fa-exclamation-triangle"></i>';
-                button.style.background = '#EF4444';
-                setTimeout(() => {
-                    button.innerHTML = originalBtnHTML;
-                    button.style.background = '';
-                    button.disabled = false;
-                }, 3000);
-            });
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        })
+        .catch((err) => {
+            console.error('Submission error:', err);
+            button.innerHTML = 'Failed — Try Again <i class="fas fa-exclamation-triangle"></i>';
+            button.style.background = '#EF4444';
+            setTimeout(() => {
+                button.innerHTML = originalBtnHTML;
+                button.style.background = '';
+                button.disabled = false;
+            }, 3000);
+        });
     });
 }
