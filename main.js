@@ -216,6 +216,7 @@ function openProjectFolder(category) {
     modal.style.display = 'flex';
     setTimeout(() => modal.classList.add('active'), 10);
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 }
 
 function closeProjectFolder() {
@@ -224,6 +225,7 @@ function closeProjectFolder() {
     setTimeout(() => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
     }, 300);
 }
 
