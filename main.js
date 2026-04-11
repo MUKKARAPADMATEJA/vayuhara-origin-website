@@ -87,7 +87,7 @@ function sendViaWhatsApp(e) {
         `— Sent from vayuharaorigin.com`;
 
     const encoded = encodeURIComponent(text);
-    window.open(`https://wa.me/917013843139?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/919063996713?text=${encoded}`, '_blank');
 
     // Reset form after opening WhatsApp
     document.getElementById('whatsapp-form').reset();
