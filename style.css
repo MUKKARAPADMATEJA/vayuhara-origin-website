@@ -4,15 +4,21 @@
 */
 
 :root {
-    --primary: #0B1220;
-    --navy-deep: #0B1220;
-    --accent: #C6A55C;
-    --bg-white: #FFFFFF;
-    --bg-soft: #F7F8FA;
-    --text-main: #1F2937;
-    --text-light: #6B7280;
-    --white: #FFFFFF;
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --primary: #0b1220;
+    --accent: #d4af37;
+    --white: #ffffff;
+    --bg-white: #fcfcfc;
+    --bg-soft: #f8f9fa;
+    --text-main: #2d3436;
+    --text-light: #636e72;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    
+    /* Fluid Typography - scaled for all devices */
+    --h1: clamp(2.5rem, 8vw, 4.5rem);
+    --h2: clamp(2rem, 5vw, 3rem);
+    --h3: clamp(1.5rem, 3vw, 2rem);
+    --p: clamp(1rem, 1.2vw, 1.15rem);
+    
     --radius: 18px;
     --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.03);
 }
@@ -25,24 +31,29 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-main);
     background-color: var(--bg-white);
-    line-height: 1.7;
-    letter-spacing: -0.01em;
+    line-height: 1.6;
     overflow-x: hidden;
+    /* Safe Area for Mobile devices with notches */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
     font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
     color: var(--primary);
+    line-height: 1.2;
 }
+
+h1 { font-size: var(--h1); }
+h2 { font-size: var(--h2); }
+h3 { font-size: var(--h3); }
+p { font-size: var(--p); }
 
 a {
     text-decoration: none;
@@ -1539,5 +1550,49 @@ section {
     .fab-wa { padding: 12px; border-radius: 50%; width: 56px; height: 56px; justify-content: center; }
     .fab-wa i { font-size: 2rem; }
     .fab-scroll { width: 44px; height: 44px; }
+}
+
+
+/* -- ADVANCED TABLET & MOBILE REFINEMENTS -- */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .services-grid, .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-content h1 {
+        max-width: 90%;
+        margin: 0 auto 2rem;
+    }
+    
+    section {
+        padding: 80px 5% !important;
+    }
+}
+
+/* -- TOUCH UI POLISH -- */
+@media (max-width: 1024px) {
+    .btn, .nav-cta, .mobile-menu-btn, .fab-wa, .fab-scroll {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .btn:active {
+        transform: scale(0.96) !important;
+        opacity: 0.9;
+    }
+
+    /* Modal spacing for tablets/phones */
+    .modal-content {
+        padding: 30px 20px !important;
+    }
+    
+    #modal-grid {
+        gap: 15px !important;
+    }
 }
 
