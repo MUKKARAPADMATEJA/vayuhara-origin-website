@@ -69,6 +69,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// ── WHATSAPP CONTACT FORM ──
+function sendViaWhatsApp(e) {
+    e.preventDefault();
+
+    const name    = document.getElementById('wa-name').value.trim();
+    const service = document.getElementById('wa-service').value;
+    const message = document.getElementById('wa-message').value.trim();
+
+    if (!name || !service || !message) return;
+
+    const text = 
+        `Hello Vayuhara Origin! 👋\n\n` +
+        `*Name:* ${name}\n` +
+        `*Service Interested In:* ${service}\n\n` +
+        `*Message:*\n${message}\n\n` +
+        `— Sent from vayuharaorigin.com`;
+
+    const encoded = encodeURIComponent(text);
+    window.open(`https://wa.me/917013843139?text=${encoded}`, '_blank');
+
+    // Reset form after opening WhatsApp
+    document.getElementById('whatsapp-form').reset();
+}
+
 // Portfolio Modal Logic — DOM refs
 const modal = document.getElementById('project-modal');
 const modalTitle = document.getElementById('modal-title');
