@@ -179,55 +179,31 @@ function openProjectFolder(category) {
                 img.src = work.src;
                 img.alt = work.caption || 'Portfolio Work';
                 img.loading = 'lazy';
-                img.style.cssText = `
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    display: block;
-                    transition: transform 0.4s ease;
-                `;
+                img.style.cssText = `width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease;`;
 
-                // Caption label
                 const label = document.createElement('div');
-                label.style.cssText = `
-                    position: absolute;
-                    bottom: 0; left: 0; right: 0;
-                    background: linear-gradient(transparent, rgba(11,18,32,0.75));
-                    color: #fff;
-                    font-size: 0.78rem;
-                    font-weight: 600;
-                    font-family: 'Inter', sans-serif;
-                    letter-spacing: 0.5px;
-                    padding: 14px 12px 10px;
-                    opacity: 0;
-                    transition: opacity 0.3s ease;
-                `;
+                label.style.cssText = `position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(11,18,32,0.75)); color: #fff; font-size: 0.78rem; font-weight: 600; font-family: 'Inter', sans-serif; padding: 14px 12px 10px; opacity: 0; transition: opacity 0.3s ease;`;
                 label.innerText = work.caption;
 
                 itemDiv.appendChild(img);
                 itemDiv.appendChild(label);
 
-                // Hover effects (desktop)
-                itemDiv.addEventListener('mouseenter', () => {
-                    img.style.transform = 'scale(1.05)';
-                    label.style.opacity = '1';
-                });
-                itemDiv.addEventListener('mouseleave', () => {
-                    img.style.transform = 'scale(1)';
-                    label.style.opacity = '0';
-                });
-
-                // Tap / Click → lightbox zoom
+                itemDiv.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.05)'; label.style.opacity = '1'; });
+                itemDiv.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; label.style.opacity = '0'; });
                 itemDiv.addEventListener('click', () => openLightbox(work.src, work.caption));
-
             } else {
-                // Video
+                itemDiv.style.aspectRatio = '16/9';
                 const vid = document.createElement('video');
                 vid.src = work.src;
                 vid.controls = true;
-                vid.muted = true;
                 vid.playsInline = true;
+                vid.controlsList = 'nodownload'; 
+                vid.oncontextmenu = (e) => e.preventDefault();
                 vid.style.cssText = 'width:100%; height:100%; object-fit:cover; display:block;';
+                vid.addEventListener('play', () => {
+                    const allVids = modalGrid.querySelectorAll('video');
+                    allVids.forEach(v => { if(v !== vid) v.pause(); });
+                });
                 itemDiv.appendChild(vid);
             }
 
