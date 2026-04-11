@@ -1204,31 +1204,42 @@ section {
 .ai-assistant-container {
     position: fixed;
     top: 50%;
-    right: 30px;
+    right: 0;
     transform: translateY(-50%);
     z-index: 9999;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 15px;
+    flex-direction: row-reverse; /* Align window to the left of the vertical toggle */
+    align-items: center;
+    gap: 0;
     font-family: 'Inter', sans-serif;
 }
 
 #ai-toggle {
     background: linear-gradient(135deg, var(--accent), #9A7B3F);
     color: white;
-    padding: 14px 24px;
-    border-radius: 50px;
+    padding: 18px 25px;
+    border-radius: 12px 0 0 12px; /* Rounded only on the inner side */
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(198, 165, 92, 0.4);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
-    gap: 10px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    gap: 12px;
+    transition: all 0.3s ease;
     border: none;
     font-weight: 700;
     font-size: 0.95rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    writing-mode: vertical-rl; /* Vertical Text */
+    text-transform: uppercase;
+}
+
+#ai-toggle i {
+    transform: rotate(90deg); /* Counter-rotate icon so it stays upright */
+}
+
+#ai-toggle:hover {
+    padding-right: 35px; /* Slight "peek out" effect on hover */
+    background: var(--primary);
 }
 
 #ai-toggle:hover {
