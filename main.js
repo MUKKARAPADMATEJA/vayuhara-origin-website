@@ -289,16 +289,6 @@ window.onclick = function(event) {
     }
 }
 
-
-/* 
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        // ... AJAX disabled for debugging ...
-    });
-}
-*/
-
 // -- SCROLL TO TOP LOGIC --
 const scrollTopBtn = document.getElementById('scroll-top');
 window.addEventListener('scroll', () => {
@@ -314,13 +304,42 @@ scrollTopBtn.addEventListener('click', () => {
 });
 
 
-// ── VAYUHARA AI SYSTEM (MULTILINGUAL v3.0) ──
+// ── VAYUHARA AI SYSTEM (MULTILINGUAL v3.1) ──
 const aiToggle = document.getElementById('ai-toggle');
 const aiClose = document.getElementById('ai-close');
 const aiWindow = document.getElementById('ai-window');
 const aiInput = document.getElementById('ai-input');
 const aiSend = document.getElementById('ai-send');
 const aiMessages = document.getElementById('ai-messages');
+
+let currentAILang = 'en';
+
+const aiKnowledgeBase = {
+    'en': {
+        'greetings': 'Hello! I am the **VAYUHARA AI** 🤖. How can I assist you in English today? ✨',
+        'services': 'We offer a full creative suite: **Logo Design** 🎨, **Graphic Design** ✍️, **Video Editing** 🎬, **Web Development** 💻, and **Digital Artworks** 💎.',
+        'contact': 'Reach our team at vayuharaorigin@gmail.com ✉️ or WhatsApp: **+91 9063996713** 📞 (Msgs/Calls only). We respond instantly! ⚡',
+        'founder': 'Mukkara Padma Teja is our Founder 👑 and the creative visionary behind every masterpiece 🚀.',
+        'price': 'Our pricing is project-based and very competitive 💰. To get an exact quote for your project, reach out on WhatsApp! 📲',
+        'default': 'That is an interesting vision! 🌟 To give you the most accurate details for your project, let\'s chat on WhatsApp: +91 9063996713 💬'
+    },
+    'hi': {
+        'greetings': 'नमस्ते! मैं **VAYUHARA AI** 🤖 हूँ। मैं आपकी कैसे मदद कर सकता हूँ? ✨',
+        'services': 'हम आपको ये सेवाएं देते हैं: **लोगो डिजाइन** 🎨, **ग्राफिक डिजाइन** ✍️, **वीडियो एडिटिंग** 🎬 और **वेबसाइट डेवलपमेंट** 💻।',
+        'contact': 'हमसे vayuharaorigin@gmail.com ✉️ या व्हाट्सएप: **+91 9063996713** 📞 पर संपर्क करें। ⚡',
+        'founder': 'मुक्कारा पद्म तेజా हमारे संस्थापक (Founder) 👑 और विजनरी लीडर हैं 🚀।',
+        'price': 'हमारी कीमतें आपके प्रोजेक्ट के हिसाब से अनुकूलित होती हैं 💰। व्हाट्सएप पर संपर्क करें! 📲',
+        'default': 'यह एक शानदार विचार है! 🌟 विस्तृत जानकारी के लिए कृपया व्हाट्सएप पर हमसे जुड़ें: +91 9063996713 💬'
+    },
+    'te': {
+        'greetings': 'నమస్కారం! నేను **VAYUHARA AI** 🤖. మీకు ఎలా సహాయపడగలను? ✨',
+        'services': 'మేము **లోగో డిజైన్** 🎨, **గ్రాఫిక్ డిజైన్** ✍️, **వీడియో ఎడిటింగ్** 🎬 మరియు **వెబ్‌సైట్ డెవలప్‌మెంట్** 💻 సేవలను అందిస్తాము.',
+        'contact': 'మమ్మల్ని vayuharaorigin@gmail.com ✉️ లేదా వాట్సాప్: **+91 9063996713** 📞 లో సంప్రదించండి. ⚡',
+        'founder': 'ముక్కార పద్మ తేజ మా వ్యవస్థాపకుడు (Founder) 👑 మరియు మా క్రియేటివ్ విజన్ 🚀.',
+        'price': 'ప్రాజెక్ట్ ఆధారంగా మా ధరలు ఉంటాయి 💰. వివరాల కోసం మాకు వాట్సాప్ చేయండి! 📲',
+        'default': 'ఇది చాలా మంచి ఆలోచన! 🌟 మరిన్ని వివరాల కోసం దయచేసి వాట్సాప్‌లో చాట్ చేయండి: +91 9063996713 💬'
+    }
+};
 
 function toggleAI() { aiWindow.classList.toggle('active'); }
 if(aiToggle) aiToggle.addEventListener('click', toggleAI);
@@ -334,42 +353,10 @@ function addMessage(text, type) {
     aiMessages.scrollTop = aiMessages.scrollHeight;
 }
 
-let currentAILang = 'en';
-
-const aiKnowledgeBase = {
-    'en': {
-        'greetings': 'Hello! I am the **VAYUHARA AI**. How can I assist you in English today?',
-        'services': 'We offer Logo Design, Graphic Design, Video Editing, Web Development, and Digital Artworks.',
-        'contact': 'Contact us at vayuharaorigin@gmail.com or WhatsApp: +91 9063996713 (Msgs/Calls only).',
-        'founder': 'Mukkara Padma Teja is our Founder and creative leader.',
-        'price': 'Our pricing is project-based. Reach out on WhatsApp for a quick quote!',
-        'default': 'For specific details, please chat with us on WhatsApp: +91 9063996713'
-    },
-    'hi': {
-        'greetings': 'नमस्ते! मैं **VAYUHARA AI** हूँ। मैं आपकी कैसे मदद कर सकता हूँ?',
-        'services': 'हम लोगो डिजाइन, ग्राफिक डिजाइन, वीडियो एडिटिंग और वेबसाइट डेवलपमेंट की सेवाएं देते हैं।',
-        'contact': 'हमसे vayuharaorigin@gmail.com या व्हाट्सएप: +91 9063996713 पर संपर्क करें।',
-        'founder': 'मुक्कारा पद्म तेजा हमारे संस्थापक (Founder) और रचनात्मक नेता हैं।',
-        'price': 'हमारी कीमतें प्रोजेक्ट पर आधारित हैं। व्हाट्सएप पर संपर्क करें!',
-        'default': 'विस्तृत जानकारी के लिए कृपया व्हाट्सएप पर चैट करें: +91 9063996713'
-    },
-    'te': {
-        'greetings': 'నమస్కారం! నేను **VAYUHARA AI**. మీకు ఎలా సహాయపడగలను?',
-        'services': 'మేము లోగో డిజైన్, గ్రాఫిక్ డిజైన్, వీడియో ఎడిటింగ్ మరియు వెబ్‌సైట్ డెవలప్‌మెంట్ సేవలను అందిస్తాము.',
-        'contact': 'మమ్మల్ని vayuharaorigin@gmail.com లేదా వాట్సాప్: +91 9063996713 లో సంప్రదించండి.',
-        'founder': 'ముక్కార పద్మ తేజ మా వ్యవస్థాపకుడు (Founder).',
-        'price': 'ప్రాజెక్ట్ ఆధారంగా మా ధరలు ఉంటాయి. వివరాల కోసం వాట్సాప్ చేయండి!',
-        'default': 'మరిన్ని వివరాల కోసం దయచేసి వాట్సాప్‌లో చాట్ చేయండి: +91 9063996713'
-    }
-};
-
 function setAILang(lang) {
     currentAILang = lang;
     document.querySelectorAll('.ai-lang-selector button').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    // Welcome message in new language
-    addMessage(aiKnowledgeBase[lang]['greetings'], 'bot');
+    setTimeout(() => addMessage(aiKnowledgeBase[lang]['greetings'], 'bot'), 300);
 }
 
 function processAI(query) {
@@ -377,7 +364,6 @@ function processAI(query) {
     const lang = currentAILang;
     let response = aiKnowledgeBase[lang]['default'];
 
-    // Intelligence Logic
     if (q.match(/hi|hello|hey|नमस्ते|నమస్కారం/)) response = aiKnowledgeBase[lang]['greetings'];
     else if (q.match(/service|offer|do you do|काम|काम|పని|సేవలు/)) response = aiKnowledgeBase[lang]['services'];
     else if (q.match(/contact|phone|number|reach|नंबर|సంప్రదించండి|ఫోన్/)) response = aiKnowledgeBase[lang]['contact'];
@@ -386,15 +372,16 @@ function processAI(query) {
 
     setTimeout(() => { 
         const typingMsg = document.createElement('div');
-        typingMsg.className = 'message bot-msg typing';
-        typingMsg.innerHTML = '...';
+        typingMsg.className = 'message bot-msg typing-indicator';
+        typingMsg.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
         aiMessages.appendChild(typingMsg);
         aiMessages.scrollTop = aiMessages.scrollHeight;
 
+        const thinkTime = 1000 + Math.random() * 800;
         setTimeout(() => {
             typingMsg.remove();
             addMessage(response, 'bot');
-        }, 800);
+        }, thinkTime);
     }, 200);
 }
 
