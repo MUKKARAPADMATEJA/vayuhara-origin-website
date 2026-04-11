@@ -1292,13 +1292,13 @@ section {
 }
 
 #ai-toggle {
+    display: flex; /* Ensure visibility */
     background: linear-gradient(135deg, var(--accent), #9A7B3F);
     color: white;
     padding: 20px 25px;
     border-radius: 12px 0 0 12px;
     cursor: pointer;
     box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
-    display: flex;
     align-items: center;
     gap: 15px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1309,6 +1309,8 @@ section {
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
+
+/* Force Deployment Heartbeat: 10:18 AM */
 
 #ai-toggle i {
     transform: rotate(90deg);
