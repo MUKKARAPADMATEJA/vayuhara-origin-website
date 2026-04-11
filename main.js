@@ -197,10 +197,14 @@ function openProjectFolder(category) {
                 vid.controlsList = 'nodownload'; 
                 vid.oncontextmenu = (e) => e.preventDefault();
                 vid.style.cssText = 'width:100%; height:100%; object-fit:cover; display:block;';
-                vid.addEventListener('play', () => {
-                    const allVids = modalGrid.querySelectorAll('video');
-                    allVids.forEach(v => { if(v !== vid) v.pause(); });
+                
+                // Clicking video card opens universal lightbox
+                itemDiv.addEventListener('click', (e) => {
+                    // Prevent conflict with native video controls
+                    if (e.target === vid && vid.controls) return; 
+                    openLightbox(idx);
                 });
+
                 itemDiv.appendChild(vid);
             }
             modalGrid.appendChild(itemDiv);
@@ -223,14 +227,10 @@ function closeProjectFolder() {
     }, 300);
 }
 
-// ── LIGHTBOX (Full-screen gallery viewer) ──
-let currentGallery = [];
-let currentGalleryIdx = 0;
-
 function openLightbox(idx) {
     currentGalleryIdx = idx;
     const work = currentGallery[idx];
-    if (!work || work.type !== 'img') return;
+    if (!work) return;
 
     // Remove existing
     const existing = document.getElementById('vayuhara-lightbox');
@@ -240,7 +240,7 @@ function openLightbox(idx) {
     lb.id = 'vayuhara-lightbox';
     lb.style.cssText = `
         position: fixed; inset: 0; z-index: 99999;
-        background: rgba(7, 20, 38, 0.98);
+        background: rgba(7, 20, 38, 0.99);
         display: flex; flex-direction: column;
         align-items: center; justify-content: center;
         padding: 20px;
@@ -250,45 +250,59 @@ function openLightbox(idx) {
     lb.innerHTML = `
         <style>
             @keyframes lbFadeIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
-            #vayuhara-lightbox img { max-width:90%; max-height:75vh; object-fit:contain; border-radius:12px; box-shadow:0 30px 100px rgba(0,0,0,0.8); transition: transform 0.3s ease; }
-            .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.05); color:#fff; border:none; width:60px; height:60px; border-radius:50%; font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s; z-index:100; }
+            .lb-content-container { position:relative; max-width:90%; max-height:80vh; display:flex; flex-direction:column; align-items:center; }
+            .lb-content-container img, .lb-content-container video { max-width:100%; max-height:75vh; border-radius:12px; box-shadow:0 30px 100px rgba(0,0,0,0.8); }
+            .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.05); color:#fff; border:none; width:50px; height:50px; border-radius:50%; font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s; z-index:100; }
             .lb-nav:hover { background:var(--accent); transform:translateY(-50%) scale(1.1); }
-            .lb-prev { left:30px; }
-            .lb-next { right:30px; }
+            .lb-prev { left:-70px; }
+            .lb-next { right:-70px; }
+            @media (max-width: 768px) { .lb-prev { left:10px; } .lb-next { right:10px; } .lb-nav { width:40px; height:40px; background:rgba(0,0,0,0.5); } }
             .lb-count { position:absolute; top:20px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.5); font-size:0.9rem; font-family:'Inter',sans-serif; }
             #vayuhara-lightbox .lb-close { position:absolute; top:18px; right:22px; background:none; border:none; color:#fff; font-size:2.4rem; cursor:pointer; line-height:1; z-index:101; opacity:0.6; transition:opacity 0.3s; }
-            #vayuhara-lightbox .lb-close:hover { opacity:1; }
         </style>
         <div class="lb-count">${idx + 1} / ${currentGallery.length}</div>
         <button class="lb-close" onclick="closeLightbox()">&#215;</button>
-        <button class="lb-nav lb-prev" onclick="changeLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
-        <img id="lb-img" src="${work.src}" alt="${work.caption}">
-        <p class="lb-caption" id="lb-caption" style="color:white; margin-top:15px; font-family:'Inter'">${work.caption}</p>
-        <button class="lb-nav lb-next" onclick="changeLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="lb-content-container">
+            <button class="lb-nav lb-prev" onclick="changeLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+            <div id="lb-media-target"></div>
+            <p class="lb-caption" id="lb-caption" style="color:white; margin-top:20px; font-family:'Inter'; text-align:center;">${work.caption}</p>
+            <button class="lb-nav lb-next" onclick="changeLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
     `;
 
-    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
     document.body.appendChild(lb);
+    renderMediaInLightbox(work);
     document.body.style.overflow = 'hidden';
 }
 
-window.changeLightbox = function(delta) {
-    let nextIdx = currentGalleryIdx + delta;
-    if (nextIdx < 0) nextIdx = currentGallery.length - 1;
-    if (nextIdx >= currentGallery.length) nextIdx = 0;
+function renderMediaInLightbox(work) {
+    const target = document.getElementById('lb-media-target');
+    target.innerHTML = '';
     
-    // If next item is video, skip it
-    if (currentGallery[nextIdx].type !== 'img') {
-        currentGalleryIdx = nextIdx;
-        changeLightbox(delta);
-        return;
+    if (work.type === 'video') {
+        const vid = document.createElement('video');
+        vid.src = work.src;
+        vid.controls = true;
+        vid.autoplay = true;
+        vid.controlsList = 'nodownload';
+        vid.oncontextmenu = (e) => e.preventDefault();
+        vid.style.cssText = 'max-width:100%; max-height:75vh; border-radius:12px;';
+        target.appendChild(vid);
+    } else {
+        const img = document.createElement('img');
+        img.src = work.src;
+        img.style.cssText = 'max-width:100%; max-height:75vh; border-radius:12px;';
+        target.appendChild(img);
     }
+}
+
+window.changeLightbox = function(delta) {
+    currentGalleryIdx = (currentGalleryIdx + delta + currentGallery.length) % currentGallery.length;
+    const work = currentGallery[currentGalleryIdx];
     
-    currentGalleryIdx = nextIdx;
-    const work = currentGallery[nextIdx];
-    document.getElementById('lb-img').src = work.src;
+    renderMediaInLightbox(work);
     document.getElementById('lb-caption').innerText = work.caption;
-    document.querySelector('.lb-count').innerText = `${nextIdx + 1} / ${currentGallery.length}`;
+    document.querySelector('.lb-count').innerText = `${currentGalleryIdx + 1} / ${currentGallery.length}`;
 };
 
 // Keyboard Arrow Support
