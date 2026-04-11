@@ -1930,3 +1930,19 @@ section {
     }
 }
 
+
+/* -- TYPING ANIMATION -- */
+.typing {
+    font-style: italic;
+    color: rgba(0,0,0,0.4) !important;
+    background: transparent !important;
+    padding: 0 16px !important;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
