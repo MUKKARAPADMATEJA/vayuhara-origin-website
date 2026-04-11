@@ -112,8 +112,7 @@ const projectData = {
     ],
     'Graphic Design': [],  // Coming soon
     'Video Editing': [
-        { type: 'video', src: 'edit_1.mp4', caption: 'Creative Motion 1' },
-        { type: 'video', src: 'edit_2.mp4', caption: 'Dynamic Transition 2' },
+        { type: 'video', src: 'video_edit_2.mp4', caption: 'Creative Showcase' },
         { type: 'video', src: 'video_edit_3.mp4', caption: 'Cinematic Credits' },
         { type: 'video', src: 'video_edit_4.mp4', caption: 'Production Highlight' },
         { type: 'video', src: 'video_edit_5.mp4', caption: 'Visual Storytelling' },
