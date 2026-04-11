@@ -100,7 +100,16 @@ const modalGrid = document.getElementById('modal-grid');
 
 // Portfolio Folder Data
 const projectData = {
-    'Logo Design':    [],  // Coming soon
+    'Logo Design': [
+        { type: 'img', src: 'logo_1.jpg', caption: 'Premium Branding 1' },
+        { type: 'img', src: 'logo_2.jpg', caption: 'Vayuhara Concept 2' },
+        { type: 'img', src: 'logo_3.jpg', caption: 'Digital Poster 3' },
+        { type: 'img', src: 'logo_4.jpg', caption: 'Creative Identity 4' },
+        { type: 'img', src: 'logo_5.jpg', caption: 'Minimalist Logo 5' },
+        { type: 'img', src: 'logo_6.jpg', caption: 'Brand Identity 6' },
+        { type: 'img', src: 'logo_7.jpg', caption: 'Graphic Concept 7' },
+        { type: 'img', src: 'logo_8.jpg', caption: 'Modern Poster 8' },
+    ],
     'Graphic Design': [],  // Coming soon
     'Video Editing':  [],  // Coming soon
     'Art Works': [
