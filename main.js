@@ -319,7 +319,7 @@ const aiKnowledgeBase = {
         'greetings': 'Hello! I am the **VAYUHARA AI** 🤖. How can I assist you in English today? ✨',
         'services': 'We offer a full creative suite: **Logo Design** 🎨, **Graphic Design** ✍️, **Video Editing** 🎬, **Web Development** 💻, and **Digital Artworks** 💎.',
         'contact': 'Reach our team at vayuharaorigin@gmail.com ✉️ or WhatsApp: **+91 9063996713** 📞 (Msgs/Calls only). We respond instantly! ⚡',
-        'founder': 'Mukkara Padma Teja is our Founder 👑 and the creative visionary behind every masterpiece 🚀.',
+        'founder': 'Padma Teja Mukkara is our Founder 👑 and the creative visionary behind every masterpiece 🚀.',
         'price': 'Our pricing is project-based and very competitive 💰. To get an exact quote for your project, reach out on WhatsApp! 📲',
         'default': 'That is an interesting vision! 🌟 To give you the most accurate details for your project, let\'s chat on WhatsApp: +91 9063996713 💬'
     },
@@ -327,7 +327,7 @@ const aiKnowledgeBase = {
         'greetings': 'नमस्ते! मैं **VAYUHARA AI** 🤖 हूँ। मैं आपकी कैसे मदद कर सकता हूँ? ✨',
         'services': 'हम आपको ये सेवाएं देते हैं: **लोगो डिजाइन** 🎨, **ग्राफिक डिजाइन** ✍️, **वीडियो एडिटिंग** 🎬 और **वेबसाइट डेवलपमेंट** 💻।',
         'contact': 'हमसे vayuharaorigin@gmail.com ✉️ या व्हाट्सएप: **+91 9063996713** 📞 पर संपर्क करें। ⚡',
-        'founder': 'मुक्कारा पद्म तेజా हमारे संस्थापक (Founder) 👑 और विजनरी लीडर हैं 🚀।',
+        'founder': 'पद्म तेजा मुक्कारा हमारे संस्थापक (Founder) 👑 और विजनरी लीडर हैं 🚀।',
         'price': 'हमारी कीमतें आपके प्रोजेक्ट के हिसाब से अनुकूलित होती हैं 💰। व्हाट्सएप पर संपर्क करें! 📲',
         'default': 'यह एक शानदार विचार है! 🌟 विस्तृत जानकारी के लिए कृपया व्हाट्सएप पर हमसे जुड़ें: +91 9063996713 💬'
     },
@@ -335,7 +335,7 @@ const aiKnowledgeBase = {
         'greetings': 'నమస్కారం! నేను **VAYUHARA AI** 🤖. మీకు ఎలా సహాయపడగలను? ✨',
         'services': 'మేము **లోగో డిజైన్** 🎨, **గ్రాఫిక్ డిజైన్** ✍️, **వీడియో ఎడిటింగ్** 🎬 మరియు **వెబ్‌సైట్ డెవలప్‌మెంట్** 💻 సేవలను అందిస్తాము.',
         'contact': 'మమ్మల్ని vayuharaorigin@gmail.com ✉️ లేదా వాట్సాప్: **+91 9063996713** 📞 లో సంప్రదించండి. ⚡',
-        'founder': 'ముక్కార పద్మ తేజ మా వ్యవస్థాపకుడు (Founder) 👑 మరియు మా క్రియేటివ్ విజన్ 🚀.',
+        'founder': 'పద్మ తేజ ముక్కార మా వ్యవస్థాపకుడు (Founder) 👑 మరియు మా క్రియేటివ్ విజన్ 🚀.',
         'price': 'ప్రాజెక్ట్ ఆధారంగా మా ధరలు ఉంటాయి 💰. వివరాల కోసం మాకు వాట్సాప్ చేయండి! 📲',
         'default': 'ఇది చాలా మంచి ఆలోచన! 🌟 మరిన్ని వివరాల కోసం దయచేసి వాట్సాప్‌లో చాట్ చేయండి: +91 9063996713 💬'
     }
