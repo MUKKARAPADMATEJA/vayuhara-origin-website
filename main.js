@@ -172,28 +172,24 @@ function openProjectFolder(category) {
         works.forEach((work, idx) => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'work-item';
-            // Stagger delay for professional entrance
-            itemDiv.style.animationDelay = `${idx * 0.05}s`;
-
-            const card = document.createElement('div');
-            card.className = 'work-item-card';
+            itemDiv.style.cssText = `height: 300px; display: flex; align-items: center; border-radius: 14px; overflow: hidden; background: #f9fafb; cursor: zoom-in; position: relative;`;
 
             if (work.type === 'img') {
                 const img = document.createElement('img');
                 img.src = work.src;
-                img.style.cssText = `width: 100%; height: auto; max-height: 100%; object-fit: contain; transition: transform 0.4s ease;`;
+                img.style.cssText = `width: 100%; height: auto; max-height: 100%; object-fit: contain; display: block; margin: auto; transition: transform 0.4s ease;`;
 
                 const label = document.createElement('div');
-                label.style.cssText = `position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(11,18,32,0.85)); color: #fff; font-size: 0.85rem; font-weight: 500; font-family: 'Inter', sans-serif; padding: 20px 15px 15px; opacity: 0; transition: opacity 0.3s ease; text-align: center;`;
+                label.style.cssText = `position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(11,18,32,0.75)); color: #fff; font-size: 0.78rem; font-weight: 600; font-family: 'Inter', sans-serif; padding: 14px 12px 10px; opacity: 0; transition: opacity 0.3s ease;`;
                 label.innerText = work.caption;
 
-                card.appendChild(img);
-                card.appendChild(label);
-                
-                card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.03)'; label.style.opacity = '1'; });
-                card.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; label.style.opacity = '0'; });
-                card.addEventListener('click', () => openLightbox(idx));
+                itemDiv.appendChild(img);
+                itemDiv.appendChild(label);
+                itemDiv.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.05)'; label.style.opacity = '1'; });
+                itemDiv.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; label.style.opacity = '0'; });
+                itemDiv.addEventListener('click', () => openLightbox(idx));
             } else {
+                itemDiv.style.aspectRatio = '16/9';
                 const vid = document.createElement('video');
                 vid.src = work.src;
                 vid.controls = true;
@@ -202,14 +198,15 @@ function openProjectFolder(category) {
                 vid.oncontextmenu = (e) => e.preventDefault();
                 vid.style.cssText = 'width:100%; height:100%; object-fit:cover; display:block;';
                 
-                card.addEventListener('click', (e) => {
-                    if (e.target === vid) return; 
+                // Clicking video card opens universal lightbox
+                itemDiv.addEventListener('click', (e) => {
+                    // Prevent conflict with native video controls
+                    if (e.target === vid && vid.controls) return; 
                     openLightbox(idx);
                 });
-                card.appendChild(vid);
+
+                itemDiv.appendChild(vid);
             }
-            
-            itemDiv.appendChild(card);
             modalGrid.appendChild(itemDiv);
         });
     }
