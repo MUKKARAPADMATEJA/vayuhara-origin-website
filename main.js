@@ -100,7 +100,7 @@ const modalGrid = document.getElementById('modal-grid');
 
 // Portfolio Folder Data
 const projectData = {
-    'Logo Design': [
+    'Logos & Posters': [
         { type: 'img', src: 'logo_1.jpg', caption: 'Premium Branding 1' },
         { type: 'img', src: 'logo_2.jpg', caption: 'Vayuhara Concept 2' },
         { type: 'img', src: 'logo_3.jpg', caption: 'Digital Poster 3' },
