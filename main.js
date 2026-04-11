@@ -109,6 +109,9 @@ const projectData = {
         { type: 'img', src: 'logo_6.jpg', caption: 'Brand Identity 6' },
         { type: 'img', src: 'logo_7.jpg', caption: 'Graphic Concept 7' },
         { type: 'img', src: 'logo_8.jpg', caption: 'Modern Poster 8' },
+        { type: 'img', src: 'logo_9.jpg', caption: 'Premium Art Concept 9' },
+        { type: 'img', src: 'logo_10.jpg', caption: 'Social Creative 10' },
+        { type: 'img', src: 'logo_11.jpg', caption: 'MAD X Concept 11' },
     ],
     'Graphic Design': [],  // Coming soon
     'Video Editing': [
