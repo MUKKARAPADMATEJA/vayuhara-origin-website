@@ -172,9 +172,12 @@ function openProjectFolder(category) {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'work-item';
             itemDiv.style.cssText = `
+                height: 300px;
+                display: flex;
+                align-items: center;
                 border-radius: 14px;
                 overflow: hidden;
-                background: #f3f4f6;
+                background: #f9fafb;
                 cursor: zoom-in;
                 position: relative;
             `;
@@ -184,7 +187,7 @@ function openProjectFolder(category) {
                 img.src = work.src;
                 img.alt = work.caption || 'Portfolio Work';
                 img.loading = 'lazy';
-                img.style.cssText = `width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease;`;
+                img.style.cssText = `width: 100%; height: auto; max-height: 100%; object-fit: contain; display: block; margin: auto; transition: transform 0.4s ease;`;
 
                 const label = document.createElement('div');
                 label.style.cssText = `position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(11,18,32,0.75)); color: #fff; font-size: 0.78rem; font-weight: 600; font-family: 'Inter', sans-serif; padding: 14px 12px 10px; opacity: 0; transition: opacity 0.3s ease;`;
