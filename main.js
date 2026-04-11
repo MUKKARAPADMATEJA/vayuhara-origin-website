@@ -313,3 +313,77 @@ scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+
+// -- VAYUHARA AI SYSTEM --
+const aiToggle = document.getElementById('ai-toggle');
+const aiClose = document.getElementById('ai-close');
+const aiWindow = document.getElementById('ai-window');
+const aiInput = document.getElementById('ai-input');
+const aiSend = document.getElementById('ai-send');
+const aiMessages = document.getElementById('ai-messages');
+
+const aiKnowledge = {
+    'brand': 'VAYUHARA ORIGIN is a premium digital creative agency specialized in crafting high-end digital identities.',
+    'services': 'We offer Logo Design, Graphic Design, Video Editing, Digital Artworks, and Website Development.',
+    'logo': 'Our Logo Design service focuses on crafting iconic, timeless identities for brands.',
+    'art': 'Our Art Works include Mandalas, Muggu Art, and creative digital illustrations.',
+    'website': 'We build high-performance, modern websites using cutting-edge technologies like HTML, CSS, and JS.',
+    'video': 'We provide professional Video Editing services to bring your brand stories to life.',
+    'contact': 'You can reach us at vayuharaorigin@gmail.com or via WhatsApp at +91 9063996713.',
+    'whatsapp': 'Yes! You can chat with us directly on WhatsApp at +91 9063996713 (Msgs and Calls only).',
+    'founder': 'Mukkara Padma Teja is the visionary founder of VAYUHARA ORIGIN.',
+    'team': 'Our core team includes Mukkara Padma Teja (Founder), our Co-Founder, and our SMM expert.',
+    'location': 'We operate digitally to serve clients worldwide!',
+    'cost': 'Project costs depend on the scope! Reach out via WhatsApp for a personalized quote.',
+    'default': 'That is a great question! For specific details like that, it is best to chat directly with our team on WhatsApp: https://wa.me/919063996713'
+};
+
+function toggleAI() { aiWindow.classList.toggle('active'); }
+aiToggle.addEventListener('click', toggleAI);
+aiClose.addEventListener('click', toggleAI);
+
+function addMessage(text, type) {
+    const msg = document.createElement('div');
+    msg.className = message -msg;
+    msg.innerHTML = text;
+    aiMessages.appendChild(msg);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+}
+
+function processAI(query) {
+    const q = query.toLowerCase();
+    let response = aiKnowledge['default'];
+
+    if (q.includes('service') || q.includes('offer')) response = aiKnowledge['services'];
+    else if (q.includes('logo')) response = aiKnowledge['logo'];
+    else if (q.includes('art')) response = aiKnowledge['art'];
+    else if (q.includes('web')) response = aiKnowledge['website'];
+    else if (q.includes('video')) response = aiKnowledge['video'];
+    else if (q.includes('contact') || q.includes('phone') || q.includes('email')) response = aiKnowledge['contact'];
+    else if (q.includes('whatsapp')) response = aiKnowledge['whatsapp'];
+    else if (q.includes('founder') || q.includes('boss') || q.includes('owner')) response = aiKnowledge['founder'];
+    else if (q.includes('team')) response = aiKnowledge['team'];
+    else if (q.includes('who are you') || q.includes('about')) response = aiKnowledge['brand'];
+    else if (q.includes('work') || q.includes('portfolio')) response = 'You can explore our 23+ Art Works and Logo portfolios right here on the website in the Works section!';
+
+    setTimeout(() => { addMessage(response, 'bot'); }, 600);
+}
+
+function handleSend() {
+    const text = aiInput.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    aiInput.value = '';
+    processAI(text);
+}
+
+aiSend.addEventListener('click', handleSend);
+aiInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
+
+// Global shortcut function for quick options
+window.askAI = function(query) {
+    if (!aiWindow.classList.contains('active')) toggleAI();
+    addMessage(query, 'user');
+    processAI(query);
+};
+
