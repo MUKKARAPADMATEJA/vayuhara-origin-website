@@ -69,50 +69,147 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Portfolio Modal Logic
+// Portfolio Modal Logic — DOM refs
 const modal = document.getElementById('project-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalGrid = document.getElementById('modal-grid');
 
-// Empty for now as requested
+// Portfolio Folder Data — Real images mapped to each category
 const projectData = {
-    'Logo Design': [],
-    'Graphic Design': [],
-    'Video Editing': [],
-    'Art Works': []
+    'Logo Design': [
+        { type: 'img', src: 'work_logo.png',       caption: 'Logo Design Work' },
+        { type: 'img', src: 'logo.jpeg',            caption: 'Brand Identity' },
+        { type: 'img', src: 'logoooooooo.jpeg',     caption: 'Logo Creation' },
+        { type: 'img', src: 'final logo 1.jpeg',    caption: 'Vayuhara Origin Logo' },
+    ],
+    'Graphic Design': [
+        { type: 'img', src: 'work_graphic.png',     caption: 'Graphic Design Work' },
+        { type: 'img', src: 'graphic.png',           caption: 'Digital Graphics' },
+    ],
+    'Video Editing': [],   // Coming soon — no video files yet
+    'Art Works': [
+        { type: 'img', src: '1000944520.jpg',   caption: 'Art Work 1' },
+        { type: 'img', src: '1000944521.jpg',   caption: 'Art Work 2' },
+        { type: 'img', src: '1000945619.jpg',   caption: 'Art Work 3' },
+        { type: 'img', src: '1000945620.jpg',   caption: 'Art Work 4' },
+        { type: 'img', src: '1000945621.jpg',   caption: 'Art Work 5' },
+        { type: 'img', src: '1000945622.jpg',   caption: 'Art Work 6' },
+        { type: 'img', src: '1000945623.jpg',   caption: 'Art Work 7' },
+        { type: 'img', src: '1000945624.jpg',   caption: 'Art Work 8' },
+        { type: 'img', src: '1000945627.jpg',   caption: 'Art Work 9' },
+        { type: 'img', src: '1000945628.jpg',   caption: 'Art Work 10' },
+        { type: 'img', src: '1000945629.jpg',   caption: 'Art Work 11' },
+        { type: 'img', src: '1000945631.jpg',   caption: 'Art Work 12' },
+        { type: 'img', src: '1000945633.jpg',   caption: 'Art Work 13' },
+        { type: 'img', src: '1000945634.jpg',   caption: 'Art Work 14' },
+        { type: 'img', src: '1000945635.jpg',   caption: 'Art Work 15' },
+        { type: 'img', src: '1000945637.jpg',   caption: 'Art Work 16' },
+        { type: 'img', src: '1000945638.jpg',   caption: 'Art Work 17' },
+        { type: 'img', src: '1000945639.jpg',   caption: 'Art Work 18' },
+        { type: 'img', src: '1000945641.jpg',   caption: 'Art Work 19' },
+        { type: 'img', src: '1000945755.jpg',   caption: 'Art Work 20' },
+        { type: 'img', src: '1000946402.jpg',   caption: 'Art Work 21' },
+        { type: 'img', src: '1000947400.jpg',   caption: 'Art Work 22' },
+        { type: 'img', src: '47845.jpg',        caption: 'Art Work 23' },
+    ]
 };
+
+// Lightbox (tap-to-zoom) state
+let lightboxActive = false;
 
 function openProjectFolder(category) {
     if (!modal) return;
     modalTitle.innerText = category;
-    modalGrid.innerHTML = ''; 
+    modalGrid.innerHTML = '';
 
     const works = projectData[category] || [];
-    
+
     if (works.length === 0) {
         modalGrid.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 100px 0;">
-                <i class="fas fa-folder-open" style="font-size: 4rem; color: var(--accent); opacity: 0.2; margin-bottom: 2rem;"></i>
-                <p style="font-size: 1.25rem; color: var(--text-light); opacity: 0.6;">This folder is empty for now...</p>
+            <div style="grid-column: 1 / -1; text-align: center; padding: 80px 20px; display:flex; flex-direction:column; align-items:center; gap:1.5rem;">
+                <i class="fas fa-film" style="font-size: 3.5rem; color: var(--accent); opacity: 0.25;"></i>
+                <p style="font-size: 1.1rem; color: var(--text-light); opacity: 0.6; font-family:'Sora',sans-serif;">
+                    Coming Soon...<br>
+                    <span style="font-size:0.88rem; opacity:0.7;">We're currently curating this portfolio. Check back soon!</span>
+                </p>
             </div>
         `;
     } else {
-        works.forEach(work => {
+        works.forEach((work, idx) => {
             const itemDiv = document.createElement('div');
-            itemDiv.className = 'work-item reveal active'; 
-            
+            itemDiv.className = 'work-item';
+            itemDiv.style.cssText = `
+                border-radius: 14px;
+                overflow: hidden;
+                background: #f3f4f6;
+                cursor: zoom-in;
+                position: relative;
+            `;
+
             if (work.type === 'img') {
-                itemDiv.innerHTML = `<img src="${work.src}" alt="Work" loading="lazy">`;
+                const img = document.createElement('img');
+                img.src = work.src;
+                img.alt = work.caption || 'Portfolio Work';
+                img.loading = 'lazy';
+                img.style.cssText = `
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    transition: transform 0.4s ease;
+                `;
+
+                // Caption label
+                const label = document.createElement('div');
+                label.style.cssText = `
+                    position: absolute;
+                    bottom: 0; left: 0; right: 0;
+                    background: linear-gradient(transparent, rgba(11,18,32,0.75));
+                    color: #fff;
+                    font-size: 0.78rem;
+                    font-weight: 600;
+                    font-family: 'Inter', sans-serif;
+                    letter-spacing: 0.5px;
+                    padding: 14px 12px 10px;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                `;
+                label.innerText = work.caption;
+
+                itemDiv.appendChild(img);
+                itemDiv.appendChild(label);
+
+                // Hover effects (desktop)
+                itemDiv.addEventListener('mouseenter', () => {
+                    img.style.transform = 'scale(1.05)';
+                    label.style.opacity = '1';
+                });
+                itemDiv.addEventListener('mouseleave', () => {
+                    img.style.transform = 'scale(1)';
+                    label.style.opacity = '0';
+                });
+
+                // Tap / Click → lightbox zoom
+                itemDiv.addEventListener('click', () => openLightbox(work.src, work.caption));
+
             } else {
-                itemDiv.innerHTML = `<video src="${work.src}" controls muted></video>`;
+                // Video
+                const vid = document.createElement('video');
+                vid.src = work.src;
+                vid.controls = true;
+                vid.muted = true;
+                vid.playsInline = true;
+                vid.style.cssText = 'width:100%; height:100%; object-fit:cover; display:block;';
+                itemDiv.appendChild(vid);
             }
+
             modalGrid.appendChild(itemDiv);
         });
     }
 
     modal.style.display = 'flex';
     setTimeout(() => modal.classList.add('active'), 10);
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
 }
 
 function closeProjectFolder() {
@@ -124,57 +221,64 @@ function closeProjectFolder() {
     }, 300);
 }
 
+// ── LIGHTBOX (Full-screen image tap/click viewer) ──
+function openLightbox(src, caption) {
+    // Remove existing
+    const existing = document.getElementById('vayuhara-lightbox');
+    if (existing) existing.remove();
+
+    const lb = document.createElement('div');
+    lb.id = 'vayuhara-lightbox';
+    lb.style.cssText = `
+        position: fixed; inset: 0; z-index: 99999;
+        background: rgba(7, 20, 38, 0.97);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        padding: 20px;
+        animation: lbFadeIn 0.25s ease forwards;
+    `;
+
+    lb.innerHTML = `
+        <style>
+            @keyframes lbFadeIn { from { opacity:0; } to { opacity:1; } }
+            #vayuhara-lightbox img { max-width:100%; max-height:80vh; object-fit:contain; border-radius:12px; box-shadow:0 20px 80px rgba(0,0,0,0.6); }
+            #vayuhara-lightbox .lb-caption { color:#d1d5db; font-size:0.88rem; font-family:'Inter',sans-serif; margin-top:14px; letter-spacing:0.5px; }
+            #vayuhara-lightbox .lb-close { position:absolute; top:18px; right:22px; background:none; border:none; color:#fff; font-size:2.4rem; cursor:pointer; line-height:1; z-index:2; }
+        </style>
+        <button class="lb-close" onclick="closeLightbox()">&#215;</button>
+        <img src="${src}" alt="${caption}">
+        <p class="lb-caption">${caption}</p>
+    `;
+
+    lb.addEventListener('click', (e) => {
+        if (e.target === lb) closeLightbox();
+    });
+
+    document.body.appendChild(lb);
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lb = document.getElementById('vayuhara-lightbox');
+    if (lb) lb.remove();
+    // Keep body locked if modal is still open
+    if (!modal || !modal.classList.contains('active')) {
+        document.body.style.overflow = 'auto';
+    }
+}
+
 window.onclick = function(event) {
     if (event.target == modal) {
         closeProjectFolder();
     }
 }
 
-// Contact Form Submission (Using FormSubmit.co - No API key needed)
+
+/* 
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const button = contactForm.querySelector('button');
-        const originalBtnHTML = button.innerHTML;
-
-        button.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
-        button.disabled = true;
-
-        // Collect form data
-        const formData = new FormData(contactForm);
-        
-        // Submit via Fetch
-        fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                button.innerHTML = 'Inquiry Sent! <i class="fas fa-check-circle"></i>';
-                button.style.background = '#10B981';
-                contactForm.reset();
-                setTimeout(() => {
-                    button.innerHTML = originalBtnHTML;
-                    button.style.background = '';
-                    button.disabled = false;
-                }, 5000);
-            } else {
-                throw new Error('Network response was not ok.');
-            }
-        })
-        .catch((err) => {
-            console.error('Submission error:', err);
-            button.innerHTML = 'Failed — Try Again <i class="fas fa-exclamation-triangle"></i>';
-            button.style.background = '#EF4444';
-            setTimeout(() => {
-                button.innerHTML = originalBtnHTML;
-                button.style.background = '';
-                button.disabled = false;
-            }, 3000);
-        });
+        // ... AJAX disabled for debugging ...
     });
 }
+*/
