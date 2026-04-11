@@ -111,7 +111,10 @@ const projectData = {
         { type: 'img', src: 'logo_8.jpg', caption: 'Modern Poster 8' },
     ],
     'Graphic Design': [],  // Coming soon
-    'Video Editing':  [],  // Coming soon
+    'Video Editing': [
+        { type: 'video', src: 'edit_1.mp4', caption: 'Cinematic Edit 1' },
+        { type: 'video', src: 'edit_2.mp4', caption: 'Commercial Promo 2' },
+    ],
     'Art Works': [
         { type: 'img', src: '1000944520.jpg',   caption: 'Art Work 1' },
         { type: 'img', src: '1000944521.jpg',   caption: 'Art Work 2' },
