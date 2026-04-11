@@ -45,13 +45,12 @@ const revealOnScroll = () => {
         if (rect.top < triggerPoint && rect.bottom > 0) {
             el.classList.add('active');
         } else {
-            // Symmetrical back-animation removal
             el.classList.remove('active');
         }
     });
 };
 window.addEventListener('scroll', revealOnScroll);
-revealOnScroll(); // Initial check
+revealOnScroll();
 
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -69,7 +68,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ── WHATSAPP CONTACT FORM ──
+// -- WHATSAPP CONTACT FORM --
 function sendViaWhatsApp(e) {
     e.preventDefault();
 
@@ -88,17 +87,14 @@ function sendViaWhatsApp(e) {
 
     const encoded = encodeURIComponent(text);
     window.open(`https://wa.me/919063996713?text=${encoded}`, '_blank');
-
-    // Reset form after opening WhatsApp
     document.getElementById('whatsapp-form').reset();
 }
 
-// Portfolio Modal Logic — DOM refs
+// Portfolio Modal Logic
 const modal = document.getElementById('project-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalGrid = document.getElementById('modal-grid');
 
-// Portfolio Folder Data
 const projectData = {
     'Logos & Posters': [
         { type: 'img', src: 'logo_1.jpg', caption: 'Premium Branding 1' },
@@ -113,7 +109,7 @@ const projectData = {
         { type: 'img', src: 'logo_10.jpg', caption: 'Social Creative 10' },
         { type: 'img', src: 'logo_11.jpg', caption: 'MAD X Concept 11' },
     ],
-    'Graphic Design': [],  // Coming soon
+    'Graphic Design': [],
     'Video Editing': [
         { type: 'video', src: 'video_edit_2.mp4', caption: 'Creative Showcase' },
         { type: 'video', src: 'video_edit_3.mp4', caption: 'Cinematic Credits' },
@@ -121,34 +117,34 @@ const projectData = {
         { type: 'video', src: 'video_edit_5.mp4', caption: 'Visual Storytelling' },
     ],
     'Art Works': [
-        { type: 'img', src: '1000944520.jpg',   caption: 'Art Work 1' },
-        { type: 'img', src: '1000944521.jpg',   caption: 'Art Work 2' },
-        { type: 'img', src: '1000945619.jpg',   caption: 'Art Work 3' },
-        { type: 'img', src: '1000945620.jpg',   caption: 'Art Work 4' },
-        { type: 'img', src: '1000945621.jpg',   caption: 'Art Work 5' },
-        { type: 'img', src: '1000945622.jpg',   caption: 'Art Work 6' },
-        { type: 'img', src: '1000945623.jpg',   caption: 'Art Work 7' },
-        { type: 'img', src: '1000945624.jpg',   caption: 'Art Work 8' },
-        { type: 'img', src: '1000945627.jpg',   caption: 'Art Work 9' },
-        { type: 'img', src: '1000945628.jpg',   caption: 'Art Work 10' },
-        { type: 'img', src: '1000945629.jpg',   caption: 'Art Work 11' },
-        { type: 'img', src: '1000945631.jpg',   caption: 'Art Work 12' },
-        { type: 'img', src: '1000945633.jpg',   caption: 'Art Work 13' },
-        { type: 'img', src: '1000945634.jpg',   caption: 'Art Work 14' },
-        { type: 'img', src: '1000945635.jpg',   caption: 'Art Work 15' },
-        { type: 'img', src: '1000945637.jpg',   caption: 'Art Work 16' },
-        { type: 'img', src: '1000945638.jpg',   caption: 'Art Work 17' },
-        { type: 'img', src: '1000945639.jpg',   caption: 'Art Work 18' },
-        { type: 'img', src: '1000945641.jpg',   caption: 'Art Work 19' },
-        { type: 'img', src: '1000945755.jpg',   caption: 'Art Work 20' },
-        { type: 'img', src: '1000946402.jpg',   caption: 'Art Work 21' },
-        { type: 'img', src: '1000947400.jpg',   caption: 'Art Work 22' },
-        { type: 'img', src: '47845.jpg',        caption: 'Art Work 23' },
+        { type: 'img', src: '1000944520.jpg', caption: 'Art Work 1' },
+        { type: 'img', src: '1000944521.jpg', caption: 'Art Work 2' },
+        { type: 'img', src: '1000945619.jpg', caption: 'Art Work 3' },
+        { type: 'img', src: '1000945620.jpg', caption: 'Art Work 4' },
+        { type: 'img', src: '1000945621.jpg', caption: 'Art Work 5' },
+        { type: 'img', src: '1000945622.jpg', caption: 'Art Work 6' },
+        { type: 'img', src: '1000945623.jpg', caption: 'Art Work 7' },
+        { type: 'img', src: '1000945624.jpg', caption: 'Art Work 8' },
+        { type: 'img', src: '1000945627.jpg', caption: 'Art Work 9' },
+        { type: 'img', src: '1000945628.jpg', caption: 'Art Work 10' },
+        { type: 'img', src: '1000945629.jpg', caption: 'Art Work 11' },
+        { type: 'img', src: '1000945631.jpg', caption: 'Art Work 12' },
+        { type: 'img', src: '1000945633.jpg', caption: 'Art Work 13' },
+        { type: 'img', src: '1000945634.jpg', caption: 'Art Work 14' },
+        { type: 'img', src: '1000945635.jpg', caption: 'Art Work 15' },
+        { type: 'img', src: '1000945637.jpg', caption: 'Art Work 16' },
+        { type: 'img', src: '1000945638.jpg', caption: 'Art Work 17' },
+        { type: 'img', src: '1000945639.jpg', caption: 'Art Work 18' },
+        { type: 'img', src: '1000945641.jpg', caption: 'Art Work 19' },
+        { type: 'img', src: '1000945755.jpg', caption: 'Art Work 20' },
+        { type: 'img', src: '1000946402.jpg', caption: 'Art Work 21' },
+        { type: 'img', src: '1000947400.jpg', caption: 'Art Work 22' },
+        { type: 'img', src: '47845.jpg', caption: 'Art Work 23' },
     ]
 };
 
-// Lightbox (tap-to-zoom) state
-let lightboxActive = false;
+let currentGallery = [];
+let currentGalleryIdx = 0;
 
 function openProjectFolder(category) {
     if (!modal) return;
@@ -159,53 +155,33 @@ function openProjectFolder(category) {
     currentGallery = works; 
 
     if (works.length === 0) {
-        modalGrid.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 80px 20px; display:flex; flex-direction:column; align-items:center; gap:1.5rem;">
-                <i class="fas fa-film" style="font-size: 3.5rem; color: var(--accent); opacity: 0.25;"></i>
-                <p style="font-size: 1.1rem; color: var(--text-light); opacity: 0.6; font-family:'Sora',sans-serif;">
-                    Coming Soon...<br>
-                    <span style="font-size:0.88rem; opacity:0.7;">We're currently curating this portfolio. Check back soon!</span>
-                </p>
-            </div>
-        `;
+        modalGrid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 80px 20px; color: var(--text-light);">Coming Soon...</div>`;
     } else {
         works.forEach((work, idx) => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'work-item';
-            itemDiv.style.cssText = `height: 300px; display: flex; align-items: center; border-radius: 14px; overflow: hidden; background: #f9fafb; cursor: zoom-in; position: relative;`;
+            itemDiv.style.cssText = `height: 300px; display: flex; align-items: center; border-radius: 14px; overflow: hidden; background: #f9fafb; cursor: zoom-in; position: relative; border: 1px solid rgba(0,0,0,0.05);`;
 
             if (work.type === 'img') {
                 const img = document.createElement('img');
                 img.src = work.src;
                 img.style.cssText = `width: 100%; height: auto; max-height: 100%; object-fit: contain; display: block; margin: auto; transition: transform 0.4s ease;`;
-
-                const label = document.createElement('div');
-                label.style.cssText = `position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(11,18,32,0.75)); color: #fff; font-size: 0.78rem; font-weight: 600; font-family: 'Inter', sans-serif; padding: 14px 12px 10px; opacity: 0; transition: opacity 0.3s ease;`;
-                label.innerText = work.caption;
-
                 itemDiv.appendChild(img);
-                itemDiv.appendChild(label);
-                itemDiv.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.05)'; label.style.opacity = '1'; });
-                itemDiv.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; label.style.opacity = '0'; });
+                itemDiv.addEventListener('mouseenter', () => img.style.transform = 'scale(1.05)');
+                itemDiv.addEventListener('mouseleave', () => img.style.transform = 'scale(1)');
                 itemDiv.addEventListener('click', () => openLightbox(idx));
             } else {
-                itemDiv.style.aspectRatio = '16/9';
                 const vid = document.createElement('video');
                 vid.src = work.src;
                 vid.controls = true;
                 vid.playsInline = true;
-                vid.controlsList = 'nodownload'; 
-                vid.oncontextmenu = (e) => e.preventDefault();
-                vid.style.cssText = 'width:100%; height:100%; object-fit:cover; display:block;';
-                
-                // Clicking video card opens universal lightbox
+                vid.controlsList = 'nodownload';
+                vid.style.cssText = 'width:100%; height:100%; object-fit:cover;';
+                itemDiv.appendChild(vid);
                 itemDiv.addEventListener('click', (e) => {
-                    // Prevent conflict with native video controls
-                    if (e.target === vid && vid.controls) return; 
+                    if (e.target === vid) return;
                     openLightbox(idx);
                 });
-
-                itemDiv.appendChild(vid);
             }
             modalGrid.appendChild(itemDiv);
         });
@@ -214,7 +190,6 @@ function openProjectFolder(category) {
     modal.style.display = 'flex';
     setTimeout(() => modal.classList.add('active'), 10);
     document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
 }
 
 function closeProjectFolder() {
@@ -223,7 +198,6 @@ function closeProjectFolder() {
     setTimeout(() => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
-        document.documentElement.style.overflow = 'auto';
     }, 300);
 }
 
@@ -232,40 +206,26 @@ function openLightbox(idx) {
     const work = currentGallery[idx];
     if (!work) return;
 
-    // Remove existing
-    const existing = document.getElementById('vayuhara-lightbox');
-    if (existing) existing.remove();
-
     const lb = document.createElement('div');
     lb.id = 'vayuhara-lightbox';
-    lb.style.cssText = `
-        position: fixed; inset: 0; z-index: 99999;
-        background: rgba(7, 20, 38, 0.99);
-        display: flex; flex-direction: column;
-        align-items: center; justify-content: center;
-        padding: 20px;
-        animation: lbFadeIn 0.3s ease-out forwards;
-    `;
-
+    lb.style.cssText = `position: fixed; inset: 0; z-index: 99999; background: rgba(7, 20, 38, 0.99); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;`;
+    
     lb.innerHTML = `
         <style>
-            @keyframes lbFadeIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
             .lb-content-container { position:relative; max-width:90%; max-height:80vh; display:flex; flex-direction:column; align-items:center; }
-            .lb-content-container img, .lb-content-container video { max-width:100%; max-height:75vh; border-radius:12px; box-shadow:0 30px 100px rgba(0,0,0,0.8); }
-            .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.05); color:#fff; border:none; width:50px; height:50px; border-radius:50%; font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s; z-index:100; }
-            .lb-nav:hover { background:var(--accent); transform:translateY(-50%) scale(1.1); }
-            .lb-prev { left:-70px; }
-            .lb-next { right:-70px; }
-            @media (max-width: 768px) { .lb-prev { left:10px; } .lb-next { right:10px; } .lb-nav { width:40px; height:40px; background:rgba(0,0,0,0.5); } }
-            .lb-count { position:absolute; top:20px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.5); font-size:0.9rem; font-family:'Inter',sans-serif; }
-            #vayuhara-lightbox .lb-close { position:absolute; top:18px; right:22px; background:none; border:none; color:#fff; font-size:2.4rem; cursor:pointer; line-height:1; z-index:101; opacity:0.6; transition:opacity 0.3s; }
+            .lb-content-container img, .lb-content-container video { max-width:100%; max-height:75vh; border-radius:12px; }
+            .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.1); color:#fff; border:none; width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+            .lb-prev { left:-70px; } .lb-next { right:-70px; }
+            .lb-count { position:absolute; top:20px; color:rgba(255,255,255,0.5); font-size:0.9rem; }
+            .lb-close { position:absolute; top:20px; right:20px; background:none; border:none; color:#fff; font-size:2rem; cursor:pointer; }
+            @media (max-width: 768px) { .lb-prev { left:10px; } .lb-next { right:10px; } }
         </style>
         <div class="lb-count">${idx + 1} / ${currentGallery.length}</div>
-        <button class="lb-close" onclick="closeLightbox()">&#215;</button>
+        <button class="lb-close" onclick="closeLightbox()">&times;</button>
         <div class="lb-content-container">
             <button class="lb-nav lb-prev" onclick="changeLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
             <div id="lb-media-target"></div>
-            <p class="lb-caption" id="lb-caption" style="color:white; margin-top:20px; font-family:'Inter'; text-align:center;">${work.caption}</p>
+            <p id="lb-caption" style="color:white; margin-top:20px; font-family:'Inter'; text-align:center;">${work.caption}</p>
             <button class="lb-nav lb-next" onclick="changeLightbox(1)"><i class="fas fa-chevron-right"></i></button>
         </div>
     `;
@@ -278,20 +238,13 @@ function openLightbox(idx) {
 function renderMediaInLightbox(work) {
     const target = document.getElementById('lb-media-target');
     target.innerHTML = '';
-    
     if (work.type === 'video') {
         const vid = document.createElement('video');
-        vid.src = work.src;
-        vid.controls = true;
-        vid.autoplay = true;
-        vid.controlsList = 'nodownload';
-        vid.oncontextmenu = (e) => e.preventDefault();
-        vid.style.cssText = 'max-width:100%; max-height:75vh; border-radius:12px;';
+        vid.src = work.src; vid.controls = true; vid.autoplay = true; vid.controlsList = 'nodownload'; vid.style.cssText = 'max-width:100%; max-height:75vh; border-radius:12px;';
         target.appendChild(vid);
     } else {
         const img = document.createElement('img');
-        img.src = work.src;
-        img.style.cssText = 'max-width:100%; max-height:75vh; border-radius:12px;';
+        img.src = work.src; img.style.cssText = 'max-width:100%; max-height:75vh; border-radius:12px;';
         target.appendChild(img);
     }
 }
@@ -299,145 +252,23 @@ function renderMediaInLightbox(work) {
 window.changeLightbox = function(delta) {
     currentGalleryIdx = (currentGalleryIdx + delta + currentGallery.length) % currentGallery.length;
     const work = currentGallery[currentGalleryIdx];
-    
     renderMediaInLightbox(work);
     document.getElementById('lb-caption').innerText = work.caption;
     document.querySelector('.lb-count').innerText = `${currentGalleryIdx + 1} / ${currentGallery.length}`;
 };
 
-// Keyboard Arrow Support
-window.addEventListener('keydown', (e) => {
+window.closeLightbox = function() {
     const lb = document.getElementById('vayuhara-lightbox');
-    if (!lb) return;
+    if (lb) lb.remove();
+    if (!modal || !modal.classList.contains('active')) document.body.style.overflow = 'auto';
+};
+
+window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') changeLightbox(1);
     if (e.key === 'ArrowLeft') changeLightbox(-1);
     if (e.key === 'Escape') closeLightbox();
 });
 
-function closeLightbox() {
-    const lb = document.getElementById('vayuhara-lightbox');
-    if (lb) lb.remove();
-    // Keep body locked if modal is still open
-    if (!modal || !modal.classList.contains('active')) {
-        document.body.style.overflow = 'auto';
-    }
-}
-
 window.onclick = function(event) {
-    if (event.target == modal) {
-        closeProjectFolder();
-    }
-}
-
-// -- SCROLL TO TOP LOGIC --
-const scrollTopBtn = document.getElementById('scroll-top');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-        scrollTopBtn.classList.add('active');
-    } else {
-        scrollTopBtn.classList.remove('active');
-    }
-});
-
-scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-
-// ── VAYUHARA AI SYSTEM (MULTILINGUAL v3.1) ──
-const aiToggle = document.getElementById('ai-toggle');
-const aiClose = document.getElementById('ai-close');
-const aiWindow = document.getElementById('ai-window');
-const aiInput = document.getElementById('ai-input');
-const aiSend = document.getElementById('ai-send');
-const aiMessages = document.getElementById('ai-messages');
-
-let currentAILang = 'en';
-
-const aiKnowledgeBase = {
-    'en': {
-        'greetings': 'Hello! I am the **VAYUHARA AI** 🤖. How can I assist you in English today? ✨',
-        'services': 'We offer a full creative suite: **Logo Design** 🎨, **Graphic Design** ✍️, **Poster Design** 📄, **Video Editing** 🎬, **Web Development** 💻, and **Digital Artworks** 💎.',
-        'contact': 'Reach our team at vayuharaorigin@gmail.com ✉️ or WhatsApp: **+91 9063996713** 📞 (Msgs/Calls only). We respond instantly! ⚡',
-        'founder': 'Padma Teja Mukkara is our Founder 👑 and the creative visionary behind every masterpiece 🚀.',
-        'price': 'Our pricing is project-based and very competitive 💰. To get an exact quote for your project, reach out on WhatsApp! 📲',
-        'default': 'That is an interesting vision! 🌟 To give you the most accurate details for your project, let\'s chat on WhatsApp: +91 9063996713 💬'
-    },
-    'hi': {
-        'greetings': 'नमस्ते! मैं **VAYUHARA AI** 🤖 हूँ। मैं आपकी कैसे मदद कर सकता हूँ? ✨',
-        'services': 'हम आपको ये सेवाएं देते हैं: **लोगो डिजाइन** 🎨, **ग्राफिक डिजाइन** ✍️, **पोस्टर डिजाइन** 📄, **वीडियो एडिटिंग** 🎬 और **वेबसाइट डेवलपमेंट** 💻।',
-        'contact': 'हमसे vayuharaorigin@gmail.com ✉️ या व्हाट्सएप: **+91 9063996713** 📞 पर संपर्क करें। ⚡',
-        'founder': 'पद्म तेजा मुक्कारा हमारे संस्थापक (Founder) 👑 और विजनरी लीडर हैं 🚀।',
-        'price': 'हमारी कीमतें आपके प्रोजेक्ट के हिसाब से अनुकूलित होती हैं 💰। व्हाट्सएप पर संपर्क करें! 📲',
-        'default': 'यह एक शानदार विचार है! 🌟 विस्तृत जानकारी के लिए कृपया व्हाट्सएप पर हमसे जुड़ें: +91 9063996713 💬'
-    },
-    'te': {
-        'greetings': 'నమస్కారం! నేను **VAYUHARA AI** 🤖. మీకు ఎలా సహాయపడగలను? ✨',
-        'services': 'మేము **లోగో డిజైన్** 🎨, **గ్రాఫిక్ డిజైన్** ✍️, **పోస్టర్ డిజైన్** 📄, **వీడియో ఎడిటింగ్** 🎬 మరియు **వెబ్‌సైట్ డెవలప్‌మెంట్** 💻 సేవలను అందిస్తాము.',
-        'contact': 'మమ్మల్ని vayuharaorigin@gmail.com ✉️ లేదా వాట్సాప్: **+91 9063996713** 📞 లో సంప్రదించండి. ⚡',
-        'founder': 'పద్మ తేజ ముక్కార మా వ్యవస్థాపకుడు (Founder) 👑 మరియు మా క్రియేటివ్ విజన్ 🚀.',
-        'price': 'ప్రాజెక్ట్ ఆధారంగా మా ధరలు ఉంటాయి 💰. వివరాల కోసం మాకు వాట్సాప్ చేయండి! 📲',
-        'default': 'ఇది చాలా మంచి ఆలోచన! 🌟 మరిన్ని వివరాల కోసం దయచేసి వాట్సాప్‌లో చాట్ చేయండి: +91 9063996713 💬'
-    }
-};
-
-function toggleAI() { aiWindow.classList.toggle('active'); }
-if(aiToggle) aiToggle.addEventListener('click', toggleAI);
-if(aiClose) aiClose.addEventListener('click', toggleAI);
-
-function addMessage(text, type) {
-    const msg = document.createElement('div');
-    msg.className = `message ${type}-msg`;
-    msg.innerHTML = text;
-    aiMessages.appendChild(msg);
-    aiMessages.scrollTop = aiMessages.scrollHeight;
-}
-
-function setAILang(lang) {
-    currentAILang = lang;
-    document.querySelectorAll('.ai-lang-selector button').forEach(btn => btn.classList.remove('active'));
-    setTimeout(() => addMessage(aiKnowledgeBase[lang]['greetings'], 'bot'), 300);
-}
-
-function processAI(query) {
-    const q = query.toLowerCase().trim();
-    const lang = currentAILang;
-    let response = aiKnowledgeBase[lang]['default'];
-
-    if (q.match(/hi|hello|hey|नमस्ते|నమస్కారం/)) response = aiKnowledgeBase[lang]['greetings'];
-    else if (q.match(/service|offer|do you do|काम|काम|పని|సేవలు/)) response = aiKnowledgeBase[lang]['services'];
-    else if (q.match(/contact|phone|number|reach|नंबर|సంప్రదించండి|ఫోన్/)) response = aiKnowledgeBase[lang]['contact'];
-    else if (q.match(/founder|boss|owner|padma|teja|స్థాపకుడు|సంస్థాపకుడు/)) response = aiKnowledgeBase[lang]['founder'];
-    else if (q.match(/price|cost|quote|कितना|ధర|డబ్బులు/)) response = aiKnowledgeBase[lang]['price'];
-
-    setTimeout(() => { 
-        const typingMsg = document.createElement('div');
-        typingMsg.className = 'message bot-msg typing-indicator';
-        typingMsg.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-        aiMessages.appendChild(typingMsg);
-        aiMessages.scrollTop = aiMessages.scrollHeight;
-
-        const thinkTime = 1000 + Math.random() * 800;
-        setTimeout(() => {
-            typingMsg.remove();
-            addMessage(response, 'bot');
-        }, thinkTime);
-    }, 200);
-}
-
-function handleSend() {
-    const text = aiInput.value.trim();
-    if (!text) return;
-    addMessage(text, 'user');
-    aiInput.value = '';
-    processAI(text);
-}
-
-if(aiSend) aiSend.addEventListener('click', handleSend);
-if(aiInput) aiInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
-
-window.askAI = function(query) {
-    if (!aiWindow.classList.contains('active')) toggleAI();
-    addMessage(query, 'user');
-    processAI(query);
+    if (event.target == modal) closeProjectFolder();
 };
