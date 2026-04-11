@@ -326,7 +326,7 @@ let currentAILang = 'en';
 const aiKnowledgeBase = {
     'en': {
         'greetings': 'Hello! I am the **VAYUHARA AI** 🤖. How can I assist you in English today? ✨',
-        'services': 'We offer a full creative suite: **Logo Design** 🎨, **Graphic Design** ✍️, **Video Editing** 🎬, **Web Development** 💻, and **Digital Artworks** 💎.',
+        'services': 'We offer a full creative suite: **Logo Design** 🎨, **Graphic Design** ✍️, **Poster Design** 📄, **Video Editing** 🎬, **Web Development** 💻, and **Digital Artworks** 💎.',
         'contact': 'Reach our team at vayuharaorigin@gmail.com ✉️ or WhatsApp: **+91 9063996713** 📞 (Msgs/Calls only). We respond instantly! ⚡',
         'founder': 'Padma Teja Mukkara is our Founder 👑 and the creative visionary behind every masterpiece 🚀.',
         'price': 'Our pricing is project-based and very competitive 💰. To get an exact quote for your project, reach out on WhatsApp! 📲',
@@ -334,7 +334,7 @@ const aiKnowledgeBase = {
     },
     'hi': {
         'greetings': 'नमस्ते! मैं **VAYUHARA AI** 🤖 हूँ। मैं आपकी कैसे मदद कर सकता हूँ? ✨',
-        'services': 'हम आपको ये सेवाएं देते हैं: **लोगो डिजाइन** 🎨, **ग्राफिक डिजाइन** ✍️, **वीडियो एडिटिंग** 🎬 और **वेबसाइट डेवलपमेंट** 💻।',
+        'services': 'हम आपको ये सेवाएं देते हैं: **लोगो डिजाइन** 🎨, **ग्राफिक डिजाइन** ✍️, **पोस्टर डिजाइन** 📄, **वीडियो एडिटिंग** 🎬 और **वेबसाइट डेवलपमेंट** 💻।',
         'contact': 'हमसे vayuharaorigin@gmail.com ✉️ या व्हाट्सएप: **+91 9063996713** 📞 पर संपर्क करें। ⚡',
         'founder': 'पद्म तेजा मुक्कारा हमारे संस्थापक (Founder) 👑 और विजनरी लीडर हैं 🚀।',
         'price': 'हमारी कीमतें आपके प्रोजेक्ट के हिसाब से अनुकूलित होती हैं 💰। व्हाट्सएप पर संपर्क करें! 📲',
@@ -342,7 +342,7 @@ const aiKnowledgeBase = {
     },
     'te': {
         'greetings': 'నమస్కారం! నేను **VAYUHARA AI** 🤖. మీకు ఎలా సహాయపడగలను? ✨',
-        'services': 'మేము **లోగో డిజైన్** 🎨, **గ్రాఫిక్ డిజైన్** ✍️, **వీడియో ఎడిటింగ్** 🎬 మరియు **వెబ్‌సైట్ డెవలప్‌మెంట్** 💻 సేవలను అందిస్తాము.',
+        'services': 'మేము **లోగో డిజైన్** 🎨, **గ్రాఫిక్ డిజైన్** ✍️, **పోస్టర్ డిజైన్** 📄, **వీడియో ఎడిటింగ్** 🎬 మరియు **వెబ్‌సైట్ డెవలప్‌మెంట్** 💻 సేవలను అందిస్తాము.',
         'contact': 'మమ్మల్ని vayuharaorigin@gmail.com ✉️ లేదా వాట్సాప్: **+91 9063996713** 📞 లో సంప్రదించండి. ⚡',
         'founder': 'పద్మ తేజ ముక్కార మా వ్యవస్థాపకుడు (Founder) 👑 మరియు మా క్రియేటివ్ విజన్ 🚀.',
         'price': 'ప్రాజెక్ట్ ఆధారంగా మా ధరలు ఉంటాయి 💰. వివరాల కోసం మాకు వాట్సాప్ చేయండి! 📲',
