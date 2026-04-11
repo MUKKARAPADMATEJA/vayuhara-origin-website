@@ -156,6 +156,7 @@ function openProjectFolder(category) {
     modalGrid.innerHTML = '';
 
     const works = projectData[category] || [];
+    currentGallery = works; 
 
     if (works.length === 0) {
         modalGrid.innerHTML = `
@@ -171,22 +172,11 @@ function openProjectFolder(category) {
         works.forEach((work, idx) => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'work-item';
-            itemDiv.style.cssText = `
-                height: 300px;
-                display: flex;
-                align-items: center;
-                border-radius: 14px;
-                overflow: hidden;
-                background: #f9fafb;
-                cursor: zoom-in;
-                position: relative;
-            `;
+            itemDiv.style.cssText = `height: 300px; display: flex; align-items: center; border-radius: 14px; overflow: hidden; background: #f9fafb; cursor: zoom-in; position: relative;`;
 
             if (work.type === 'img') {
                 const img = document.createElement('img');
                 img.src = work.src;
-                img.alt = work.caption || 'Portfolio Work';
-                img.loading = 'lazy';
                 img.style.cssText = `width: 100%; height: auto; max-height: 100%; object-fit: contain; display: block; margin: auto; transition: transform 0.4s ease;`;
 
                 const label = document.createElement('div');
@@ -195,10 +185,9 @@ function openProjectFolder(category) {
 
                 itemDiv.appendChild(img);
                 itemDiv.appendChild(label);
-
                 itemDiv.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.05)'; label.style.opacity = '1'; });
                 itemDiv.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; label.style.opacity = '0'; });
-                itemDiv.addEventListener('click', () => openLightbox(work.src, work.caption));
+                itemDiv.addEventListener('click', () => openLightbox(idx));
             } else {
                 itemDiv.style.aspectRatio = '16/9';
                 const vid = document.createElement('video');
@@ -214,7 +203,6 @@ function openProjectFolder(category) {
                 });
                 itemDiv.appendChild(vid);
             }
-
             modalGrid.appendChild(itemDiv);
         });
     }
@@ -235,8 +223,15 @@ function closeProjectFolder() {
     }, 300);
 }
 
-// ── LIGHTBOX (Full-screen image tap/click viewer) ──
-function openLightbox(src, caption) {
+// ── LIGHTBOX (Full-screen gallery viewer) ──
+let currentGallery = [];
+let currentGalleryIdx = 0;
+
+function openLightbox(idx) {
+    currentGalleryIdx = idx;
+    const work = currentGallery[idx];
+    if (!work || work.type !== 'img') return;
+
     // Remove existing
     const existing = document.getElementById('vayuhara-lightbox');
     if (existing) existing.remove();
@@ -245,32 +240,65 @@ function openLightbox(src, caption) {
     lb.id = 'vayuhara-lightbox';
     lb.style.cssText = `
         position: fixed; inset: 0; z-index: 99999;
-        background: rgba(7, 20, 38, 0.97);
+        background: rgba(7, 20, 38, 0.98);
         display: flex; flex-direction: column;
         align-items: center; justify-content: center;
         padding: 20px;
-        animation: lbFadeIn 0.25s ease forwards;
+        animation: lbFadeIn 0.3s ease-out forwards;
     `;
 
     lb.innerHTML = `
         <style>
-            @keyframes lbFadeIn { from { opacity:0; } to { opacity:1; } }
-            #vayuhara-lightbox img { max-width:100%; max-height:80vh; object-fit:contain; border-radius:12px; box-shadow:0 20px 80px rgba(0,0,0,0.6); }
-            #vayuhara-lightbox .lb-caption { color:#d1d5db; font-size:0.88rem; font-family:'Inter',sans-serif; margin-top:14px; letter-spacing:0.5px; }
-            #vayuhara-lightbox .lb-close { position:absolute; top:18px; right:22px; background:none; border:none; color:#fff; font-size:2.4rem; cursor:pointer; line-height:1; z-index:2; }
+            @keyframes lbFadeIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
+            #vayuhara-lightbox img { max-width:90%; max-height:75vh; object-fit:contain; border-radius:12px; box-shadow:0 30px 100px rgba(0,0,0,0.8); transition: transform 0.3s ease; }
+            .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.05); color:#fff; border:none; width:60px; height:60px; border-radius:50%; font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s; z-index:100; }
+            .lb-nav:hover { background:var(--accent); transform:translateY(-50%) scale(1.1); }
+            .lb-prev { left:30px; }
+            .lb-next { right:30px; }
+            .lb-count { position:absolute; top:20px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.5); font-size:0.9rem; font-family:'Inter',sans-serif; }
+            #vayuhara-lightbox .lb-close { position:absolute; top:18px; right:22px; background:none; border:none; color:#fff; font-size:2.4rem; cursor:pointer; line-height:1; z-index:101; opacity:0.6; transition:opacity 0.3s; }
+            #vayuhara-lightbox .lb-close:hover { opacity:1; }
         </style>
+        <div class="lb-count">${idx + 1} / ${currentGallery.length}</div>
         <button class="lb-close" onclick="closeLightbox()">&#215;</button>
-        <img src="${src}" alt="${caption}">
-        <p class="lb-caption">${caption}</p>
+        <button class="lb-nav lb-prev" onclick="changeLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+        <img id="lb-img" src="${work.src}" alt="${work.caption}">
+        <p class="lb-caption" id="lb-caption" style="color:white; margin-top:15px; font-family:'Inter'">${work.caption}</p>
+        <button class="lb-nav lb-next" onclick="changeLightbox(1)"><i class="fas fa-chevron-right"></i></button>
     `;
 
-    lb.addEventListener('click', (e) => {
-        if (e.target === lb) closeLightbox();
-    });
-
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
     document.body.appendChild(lb);
     document.body.style.overflow = 'hidden';
 }
+
+window.changeLightbox = function(delta) {
+    let nextIdx = currentGalleryIdx + delta;
+    if (nextIdx < 0) nextIdx = currentGallery.length - 1;
+    if (nextIdx >= currentGallery.length) nextIdx = 0;
+    
+    // If next item is video, skip it
+    if (currentGallery[nextIdx].type !== 'img') {
+        currentGalleryIdx = nextIdx;
+        changeLightbox(delta);
+        return;
+    }
+    
+    currentGalleryIdx = nextIdx;
+    const work = currentGallery[nextIdx];
+    document.getElementById('lb-img').src = work.src;
+    document.getElementById('lb-caption').innerText = work.caption;
+    document.querySelector('.lb-count').innerText = `${nextIdx + 1} / ${currentGallery.length}`;
+};
+
+// Keyboard Arrow Support
+window.addEventListener('keydown', (e) => {
+    const lb = document.getElementById('vayuhara-lightbox');
+    if (!lb) return;
+    if (e.key === 'ArrowRight') changeLightbox(1);
+    if (e.key === 'ArrowLeft') changeLightbox(-1);
+    if (e.key === 'Escape') closeLightbox();
+});
 
 function closeLightbox() {
     const lb = document.getElementById('vayuhara-lightbox');
