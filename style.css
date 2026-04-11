@@ -1203,8 +1203,9 @@ section {
 /* ── VAYUHARA AI v3.1 CSS ── */
 .ai-assistant-container {
     position: fixed;
-    bottom: 30px;
+    top: 50%;
     right: 30px;
+    transform: translateY(-50%);
     z-index: 9999;
     display: flex;
     flex-direction: column;
@@ -1246,12 +1247,12 @@ section {
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 25px 60px rgba(0,0,0,0.2);
-    animation: aiSlideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation: aiSlideInRight 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-@keyframes aiSlideUp {
-    from { opacity: 0; transform: translateY(30px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+@keyframes aiSlideInRight {
+    from { opacity: 0; transform: translateX(30px) scale(0.95); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
 }
 
 .ai-header {
