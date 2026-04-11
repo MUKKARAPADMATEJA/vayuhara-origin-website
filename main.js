@@ -74,12 +74,36 @@ const modal = document.getElementById('project-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalGrid = document.getElementById('modal-grid');
 
-// Portfolio Folder Data — Add images here when ready
+// Portfolio Folder Data
 const projectData = {
     'Logo Design':    [],  // Coming soon
     'Graphic Design': [],  // Coming soon
     'Video Editing':  [],  // Coming soon
-    'Art Works':      [],  // Coming soon
+    'Art Works': [
+        { type: 'img', src: '1000944520.jpg',   caption: 'Art Work 1' },
+        { type: 'img', src: '1000944521.jpg',   caption: 'Art Work 2' },
+        { type: 'img', src: '1000945619.jpg',   caption: 'Art Work 3' },
+        { type: 'img', src: '1000945620.jpg',   caption: 'Art Work 4' },
+        { type: 'img', src: '1000945621.jpg',   caption: 'Art Work 5' },
+        { type: 'img', src: '1000945622.jpg',   caption: 'Art Work 6' },
+        { type: 'img', src: '1000945623.jpg',   caption: 'Art Work 7' },
+        { type: 'img', src: '1000945624.jpg',   caption: 'Art Work 8' },
+        { type: 'img', src: '1000945627.jpg',   caption: 'Art Work 9' },
+        { type: 'img', src: '1000945628.jpg',   caption: 'Art Work 10' },
+        { type: 'img', src: '1000945629.jpg',   caption: 'Art Work 11' },
+        { type: 'img', src: '1000945631.jpg',   caption: 'Art Work 12' },
+        { type: 'img', src: '1000945633.jpg',   caption: 'Art Work 13' },
+        { type: 'img', src: '1000945634.jpg',   caption: 'Art Work 14' },
+        { type: 'img', src: '1000945635.jpg',   caption: 'Art Work 15' },
+        { type: 'img', src: '1000945637.jpg',   caption: 'Art Work 16' },
+        { type: 'img', src: '1000945638.jpg',   caption: 'Art Work 17' },
+        { type: 'img', src: '1000945639.jpg',   caption: 'Art Work 18' },
+        { type: 'img', src: '1000945641.jpg',   caption: 'Art Work 19' },
+        { type: 'img', src: '1000945755.jpg',   caption: 'Art Work 20' },
+        { type: 'img', src: '1000946402.jpg',   caption: 'Art Work 21' },
+        { type: 'img', src: '1000947400.jpg',   caption: 'Art Work 22' },
+        { type: 'img', src: '47845.jpg',        caption: 'Art Work 23' },
+    ]
 };
 
 // Lightbox (tap-to-zoom) state
