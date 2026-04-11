@@ -314,33 +314,13 @@ scrollTopBtn.addEventListener('click', () => {
 });
 
 
-// ── VAYUHARA AI SYSTEM (TRAINED v2.0) ──
+// ── VAYUHARA AI SYSTEM (MULTILINGUAL v3.0) ──
 const aiToggle = document.getElementById('ai-toggle');
 const aiClose = document.getElementById('ai-close');
 const aiWindow = document.getElementById('ai-window');
 const aiInput = document.getElementById('ai-input');
 const aiSend = document.getElementById('ai-send');
 const aiMessages = document.getElementById('ai-messages');
-
-const aiKnowledge = {
-    'greetings': 'Hello! I am the **VAYUHARA AI Assistant**. I can help you with details about our creative agency, services, or pricing. How can I assist you today?',
-    'brand': 'VAYUHARA ORIGIN is a premium digital agency specializing in high-end design and development. We bridge the gap between imagination and reality.',
-    'services': 'We offer a full suite of digital services: **Logo Design**, **Graphic Design**, **Professional Video Editing**, **Custom Web Development**, and **Traditional & Digital Art Works** (like Mandalas and Muggu Art).',
-    'logo': 'Our Logo Design process involves deep brand Research and 3+ unique concepts to ensure your brand stands out in the market.',
-    'art': 'We specialize in unique **Mandala Art** and **Muggu Art** SVGs, as well as creative digital illustrations for Social Media Marketing.',
-    'website': 'We build blazing-fast, mobile-responsive websites using modern tech stacks. Every site we build is optimized for SEO and premium aesthetics.',
-    'video': 'From raw footage to cinematic art, our Video Editing team handles color grading, transitions, and motion graphics.',
-    'contact': 'Our official contact number is **+91 9063996713**. Please note we accept **WhatsApp messages and calls only** for faster responses.',
-    'whatsapp': 'You can start a chat with us instantly on WhatsApp here: [Click to Chat](https://wa.me/919063996713)',
-    'founder': 'Mukkara Padma Teja is our Founder. He leads the creative vision at VAYUHARA ORIGIN.',
-    'team': 'Our core leadership includes **Mukkara Padma Teja** (Founder), our Co-Founder, and a dedicated SMM (Social Media) expert. We are a team of creative disruptors.',
-    'pricing': 'Our pricing is project-based to ensure you only pay for what you need. Small projects start at very competitive rates! Reach out on WhatsApp for a quick quote.',
-    'timeline': 'Most design projects are delivered within 3-7 business days, while website development varies by complexity.',
-    'location': 'We are based in India but operate on a "Global-First" model, serving clients across all time zones digitally.',
-    'thanks': 'You are very welcome! It is my pleasure to assist. Is there anything else about VAYUHARA ORIGIN you would like to know?',
-    'bye': 'Goodbye! Thank you for visiting VAYUHARA ORIGIN. Have a creative day ahead!',
-    'default': 'That sounds like an interesting project! I want to make sure you get the most accurate details for that. Could you please share those details with our experts on WhatsApp? +91 9063996713'
-};
 
 function toggleAI() { aiWindow.classList.toggle('active'); }
 if(aiToggle) aiToggle.addEventListener('click', toggleAI);
@@ -354,31 +334,57 @@ function addMessage(text, type) {
     aiMessages.scrollTop = aiMessages.scrollHeight;
 }
 
+let currentAILang = 'en';
+
+const aiKnowledgeBase = {
+    'en': {
+        'greetings': 'Hello! I am the **VAYUHARA AI**. How can I assist you in English today?',
+        'services': 'We offer Logo Design, Graphic Design, Video Editing, Web Development, and Digital Artworks.',
+        'contact': 'Contact us at vayuharaorigin@gmail.com or WhatsApp: +91 9063996713 (Msgs/Calls only).',
+        'founder': 'Mukkara Padma Teja is our Founder and creative leader.',
+        'price': 'Our pricing is project-based. Reach out on WhatsApp for a quick quote!',
+        'default': 'For specific details, please chat with us on WhatsApp: +91 9063996713'
+    },
+    'hi': {
+        'greetings': 'नमस्ते! मैं **VAYUHARA AI** हूँ। मैं आपकी कैसे मदद कर सकता हूँ?',
+        'services': 'हम लोगो डिजाइन, ग्राफिक डिजाइन, वीडियो एडिटिंग और वेबसाइट डेवलपमेंट की सेवाएं देते हैं।',
+        'contact': 'हमसे vayuharaorigin@gmail.com या व्हाट्सएप: +91 9063996713 पर संपर्क करें।',
+        'founder': 'मुक्कारा पद्म तेजा हमारे संस्थापक (Founder) और रचनात्मक नेता हैं।',
+        'price': 'हमारी कीमतें प्रोजेक्ट पर आधारित हैं। व्हाट्सएप पर संपर्क करें!',
+        'default': 'विस्तृत जानकारी के लिए कृपया व्हाट्सएप पर चैट करें: +91 9063996713'
+    },
+    'te': {
+        'greetings': 'నమస్కారం! నేను **VAYUHARA AI**. మీకు ఎలా సహాయపడగలను?',
+        'services': 'మేము లోగో డిజైన్, గ్రాఫిక్ డిజైన్, వీడియో ఎడిటింగ్ మరియు వెబ్‌సైట్ డెవలప్‌మెంట్ సేవలను అందిస్తాము.',
+        'contact': 'మమ్మల్ని vayuharaorigin@gmail.com లేదా వాట్సాప్: +91 9063996713 లో సంప్రదించండి.',
+        'founder': 'ముక్కార పద్మ తేజ మా వ్యవస్థాపకుడు (Founder).',
+        'price': 'ప్రాజెక్ట్ ఆధారంగా మా ధరలు ఉంటాయి. వివరాల కోసం వాట్సాప్ చేయండి!',
+        'default': 'మరిన్ని వివరాల కోసం దయచేసి వాట్సాప్‌లో చాట్ చేయండి: +91 9063996713'
+    }
+};
+
+function setAILang(lang) {
+    currentAILang = lang;
+    document.querySelectorAll('.ai-lang-selector button').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Welcome message in new language
+    addMessage(aiKnowledgeBase[lang]['greetings'], 'bot');
+}
+
 function processAI(query) {
     const q = query.toLowerCase().trim();
-    let response = aiKnowledge['default'];
+    const lang = currentAILang;
+    let response = aiKnowledgeBase[lang]['default'];
 
-    // Intelligence Logic - Multi-keyword detection
-    if (q.match(/hi|hello|hey|good morning|hola/)) response = aiKnowledge['greetings'];
-    else if (q.match(/service|offer|do you do|skills|expert/)) response = aiKnowledge['services'];
-    else if (q.match(/logo|brand|identity/)) response = aiKnowledge['logo'];
-    else if (q.match(/art|mandala|muggu|drawing/)) response = aiKnowledge['art'];
-    else if (q.match(/web|site|code|develop|online/)) response = aiKnowledge['website'];
-    else if (q.match(/video|edit|reel|movie|youtube/)) response = aiKnowledge['video'];
-    else if (q.match(/contact|phone|number|email|reach|call/)) response = aiKnowledge['contact'];
-    else if (q.match(/whatsapp|chat/)) response = aiKnowledge['whatsapp'];
-    else if (q.match(/founder|boss|owner|padma|teja/)) response = aiKnowledge['founder'];
-    else if (q.match(/team|member|who works/)) response = aiKnowledge['team'];
-    else if (q.match(/price|cost|how much|rate|charge|quote/)) response = aiKnowledge['pricing'];
-    else if (q.match(/time|day|duration|fast|deadlines/)) response = aiKnowledge['timeline'];
-    else if (q.match(/where|city|location|india/)) response = aiKnowledge['location'];
-    else if (q.match(/thanks|thank you|cool|great/)) response = aiKnowledge['thanks'];
-    else if (q.match(/bye|exit|close/)) response = aiKnowledge['bye'];
-    else if (q.match(/who are you|about|company|what is vayuhara/)) response = aiKnowledge['brand'];
-    else if (q.match(/work|portfolio|done/)) response = 'You can see our latest 23+ Art Works and Logo portfolios right below in the **Works** section. We have a 100% client satisfaction rate!';
+    // Intelligence Logic
+    if (q.match(/hi|hello|hey|नमस्ते|నమస్కారం/)) response = aiKnowledgeBase[lang]['greetings'];
+    else if (q.match(/service|offer|do you do|काम|काम|పని|సేవలు/)) response = aiKnowledgeBase[lang]['services'];
+    else if (q.match(/contact|phone|number|reach|नंबर|సంప్రదించండి|ఫోన్/)) response = aiKnowledgeBase[lang]['contact'];
+    else if (q.match(/founder|boss|owner|padma|teja|స్థాపకుడు|సంస్థాపకుడు/)) response = aiKnowledgeBase[lang]['founder'];
+    else if (q.match(/price|cost|quote|कितना|ధర|డబ్బులు/)) response = aiKnowledgeBase[lang]['price'];
 
     setTimeout(() => { 
-        // Add a "typing" feel
         const typingMsg = document.createElement('div');
         typingMsg.className = 'message bot-msg typing';
         typingMsg.innerHTML = '...';
