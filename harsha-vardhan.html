@@ -59,9 +59,15 @@
         .social-cta { text-align: center; padding: 100px 8%; background: var(--white); color: var(--text-main); }
         .insta-btn { 
             display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: var(--text-main); padding: 18px 40px; border-radius: 50px; font-weight: 700; font-size: 1.1rem; transition: var(--transition);
+            color: white !important; padding: 18px 40px; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; transition: var(--transition);
         }
         .insta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(220, 39, 67, 0.4); }
+        .linkedin-btn { 
+            display: inline-flex; align-items: center; gap: 12px; background: #0077b5;
+            color: white !important; padding: 18px 40px; border-radius: 50px; font-weight: 700; font-size: 1.1rem; transition: var(--transition); text-decoration: none;
+        }
+        .linkedin-btn:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(0, 119, 181, 0.4); }
+        .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
 
         @media (max-width: 768px) {
             .profile-stats { flex-direction: column; gap: 20px; }
@@ -154,9 +160,14 @@
     <section class="social-cta">
         <h2 style="font-size: 2.8rem; margin-bottom: 30px;">Let's Connect</h2>
         <p style="margin-bottom: 40px; font-size: 1.2rem; opacity: 0.8;">Follow Harsha's journey and see more daily creations on Instagram.</p>
-        <a href="https://www.instagram.com/" target="_blank" class="insta-btn">
-            <i class="fab fa-instagram"></i> View Instagram Profile
-        </a>
+                <div class="cta-buttons">
+            <a href="https://www.instagram.com/" target="_blank" class="insta-btn">
+                <i class="fab fa-instagram"></i> View Instagram
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="linkedin-btn">
+                <i class="fab fa-linkedin"></i> View LinkedIn
+            </a>
+        </div>
     </section>
 
     
@@ -164,6 +175,7 @@
     <script src="main.js"></script>
 </body>
 </html>
+
 
 
 
