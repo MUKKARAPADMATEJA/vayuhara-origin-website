@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editing | VAYUHARA ORIGIN</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-white);
+        }
+        h1 {
+            font-family: 'Sora', sans-serif;
+        }
+        .back-btn {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+        .back-btn:hover {
+            transform: translateX(-5px);
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html#portfolio" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Works
+    </a>
+
+    <section style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <i class="fas fa-film" style="font-size: 6rem; color: var(--accent); margin-bottom: 2rem; animation: floatingMuggu 10s infinite ease-in-out;"></i>
+        <h1 style="font-size: 3.5rem; color: var(--primary); margin-bottom: 1rem;">Video Editing</h1>
+        <p style="font-size: 1.5rem; color: var(--text-light); opacity: 0.8;">Cinematic storytelling in motion. <br>Video Portfolio coming soon...</p>
+    </section>
+
+    <!-- Custom JS -->
+    <script src="main.js"></script>
+</body>
+</html>
