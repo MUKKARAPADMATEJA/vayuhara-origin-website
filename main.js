@@ -1,4 +1,4 @@
-// Sticky Navbar
+﻿// Sticky Navbar
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
     if (nav) {
@@ -79,11 +79,11 @@ function sendViaWhatsApp(e) {
     if (!name || !service || !message) return;
 
     const text = 
-        `Hello Vayuhara Origin! 👋\n\n` +
+        `Hello Vayuhara Origin! ðŸ‘‹\n\n` +
         `*Name:* ${name}\n` +
         `*Service Interested In:* ${service}\n\n` +
         `*Message:*\n${message}\n\n` +
-        `— Sent from vayuharaorigin.com`;
+        `â€” Sent from vayuharaorigin.com`;
 
     const encoded = encodeURIComponent(text);
     window.open(`https://wa.me/919063996713?text=${encoded}`, '_blank');
@@ -177,7 +177,7 @@ function openProjectFolder(category) {
                 const vid = document.createElement('video');
                 vid.src = work.src;
                 vid.controls = true;
-                vid.playsInline = true;
+                vid.playsInline = true; vid.preload = 'metadata';
                 vid.controlsList = 'nodownload';
                 vid.style.cssText = 'width:100%; height:100%; object-fit:cover;';
                 itemDiv.appendChild(vid);
@@ -243,7 +243,7 @@ function renderMediaInLightbox(work) {
     target.innerHTML = '';
     if (work.type === 'video') {
         const vid = document.createElement('video');
-        vid.src = work.src; vid.controls = true; vid.autoplay = true; vid.controlsList = 'nodownload'; vid.style.cssText = 'max-width:100%; max-height:75vh; border-radius:12px;';
+        vid.src = work.src; vid.controls = true; vid.autoplay = true; vid.preload = 'auto'; vid.controlsList = 'nodownload'; vid.style.cssText = 'max-width:100%; max-height:75vh; border-radius:12px;';
         target.appendChild(vid);
     } else {
         const img = document.createElement('img');
@@ -275,3 +275,4 @@ window.addEventListener('keydown', (e) => {
 window.onclick = function(event) {
     if (event.target == modal) closeProjectFolder();
 };
+
