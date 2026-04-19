@@ -140,7 +140,10 @@ const projectData = {
         { type: 'img', src: '1000946402.jpg', caption: 'Art Work 21' },
         { type: 'img', src: '1000947400.jpg', caption: 'Art Work 22' },
         { type: 'img', src: '47845.jpg', caption: 'Art Work 23' },
-    ]
+    ],
+    'Harsha Vardhan': [],
+    'Rohith': [],
+    'Narasimha': []
 };
 
 let currentGallery = [];
