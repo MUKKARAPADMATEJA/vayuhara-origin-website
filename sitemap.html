@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap | VAYUHARA ORIGIN</title>
+    <link rel="icon" type="image/jpeg" href="final logo 1.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .sitemap-hero {
+            padding: 150px 8% 80px;
+            background: var(--bg-soft);
+            text-align: center;
+        }
+        .sitemap-container {
+            padding: 80px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+        }
+        .sitemap-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .sitemap-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+        .sitemap-links {
+            list-style: none;
+        }
+        .sitemap-links li {
+            margin-bottom: 1.2rem;
+        }
+        .sitemap-links a {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sitemap-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        .back-home {
+            margin-top: 50px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="pill-nav sticky" style="top: 10px;">
+        <a href="index.html#hero" class="logo">
+            <img src="final logo 1.jpeg" alt="VAYUHARA ORIGIN">
+        </a>
+        <a href="index.html" class="btn btn-primary">Back to Home</a>
+    </nav>
+
+    <section class="sitemap-hero">
+        <h1 style="font-size: 3.5rem;">HTML <span style="color: var(--accent);">Sitemap</span></h1>
+        <p style="margin-top: 1.5rem; color: var(--text-light); font-size: 1.2rem;">Complete directory of VAYUHARA ORIGIN digital presence.</p>
+    </section>
+
+    <main class="sitemap-container">
+        <div class="sitemap-grid">
+            <div class="sitemap-col">
+                <h3>Main Navigation</h3>
+                <ul class="sitemap-links">
+                    <li><a href="index.html#hero"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="index.html#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Our Work</a></li>
+                    <li><a href="index.html#creators-hub"><i class="fas fa-users"></i> Creators Hub</a></li>
+                    <li><a href="index.html#core"><i class="fas fa-star"></i> Core Team</a></li>
+                    <li><a href="index.html#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="index.html#contact"><i class="fas fa-paper-plane"></i> Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="sitemap-col">
+                <h3>Our Services</h3>
+                <ul class="sitemap-links">
+                    <li><a href="index.html#services">Website Development</a></li>
+                    <li><a href="index.html#services">Logo Design</a></li>
+                    <li><a href="index.html#services">Graphic Design</a></li>
+                    <li><a href="index.html#services">Video Editing</a></li>
+                    <li><a href="index.html#services">Art Works</a></li>
+                    <li><a href="index.html#services">Poster Design</a></li>
+                </ul>
+            </div>
+
+            <div class="sitemap-col">
+                <h3>Resources</h3>
+                <ul class="sitemap-links">
+                    <li><a href="art-works.html">Art Works Gallery</a></li>
+                    <li><a href="logo-design.html">Logo Design Gallery</a></li>
+                    <li><a href="video-editing.html">Video Editing Gallery</a></li>
+                    <li><a href="https://povsmatter.my.canva.site/#page-1" target="_blank">Harsha Vardhan Portfolio</a></li>
+                </ul>
+            </div>
+
+            <div class="sitemap-col">
+                <h3>Connect & Social</h3>
+                <ul class="sitemap-links">
+                    <li><a href="https://wa.me/919063996713" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
+                    <li><a href="https://www.instagram.com/vayuhara.origin" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="https://www.linkedin.com/in/vayuharaorigin/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="mailto:vayuharaorigin@gmail.com"><i class="fas fa-envelope"></i> Business Email</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-premium" style="padding-top: 60px;">
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <div class="footer-bottom-flex">
+                    <p>© 2026 VAYUHARA ORIGIN Private Limited. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
