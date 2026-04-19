@@ -1276,4 +1276,72 @@ section {
     opacity: 0.7;
 }
 n: absolute; }
+}
+
+/* Creators Hub */
+.hub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.hub-card {
+    background: var(--bg-soft);
+    padding: 50px 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.hub-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(198, 165, 92, 0.1);
+    border-color: rgba(198, 165, 92, 0.3);
+}
+
+.hub-icon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.hub-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.hub-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.hub-link {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.hub-link:hover {
+    gap: 12px;
+    color: var(--primary);
+}
+
+@media (max-width: 968px) {
+    .hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hub-grid {
+        grid-template-columns: 1fr;
+    }
 }
