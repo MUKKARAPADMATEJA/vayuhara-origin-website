@@ -1481,3 +1481,179 @@ n: absolute; }
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================================
+   GLOBAL RESPONSIVE OPTIMIZATION SYSTEM 
+   (Optimized for MacBooks, Tablets, and all Mobile Ratios)
+   ============================================================ */
+
+/* 1. Fluid Typography & Spacing */
+:root {
+    --section-pad-x: 8%;
+    --section-pad-y: 100px;
+    --h1-size: clamp(2.5rem, 8vw, 4.5rem);
+    --h2-size: clamp(2rem, 5vw, 3rem);
+}
+
+/* 2. Global Section Padding Adjustments */
+section {
+    padding: var(--section-pad-y) var(--section-pad-x) !important;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --section-pad-x: 6%;
+        --section-pad-y: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-pad-x: 5%;
+        --section-pad-y: 60px;
+    }
+}
+
+/* 3. Hero Section Optimization */
+.hero-title {
+    font-size: var(--h1-size) !important;
+    line-height: 1.1 !important;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem) !important;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .scattered-hero {
+        padding-top: 140px !important;
+        padding-bottom: 80px !important;
+    }
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* 4. Grid System Standardization */
+
+/* Services Grid */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+}
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Portfolio Grid */
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px !important;
+    }
+}
+@media (max-width: 600px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Creators Hub & Core Team */
+@media (max-width: 992px) {
+    .hub-grid, .team-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+@media (max-width: 650px) {
+    .hub-grid, .team-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* 5. Navigation Optimization */
+@media (max-width: 480px) {
+    .pill-nav {
+        padding: 8px 15px !important;
+        width: 95% !important;
+    }
+    .pill-nav .logo img {
+        height: 35px !important;
+    }
+    .nav-cta {
+        display: none !important; /* Hide CTA on very small phones to save space */
+    }
+}
+
+/* 6. About Us Layout Fixes */
+.about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+@media (max-width: 992px) {
+    .about-content-wrap {
+        text-align: center;
+    }
+    .about-stats {
+        justify-content: center;
+    }
+}
+
+/* 7. Footer Optimization */
+@media (max-width: 1200px) {
+    .footer-main-grid {
+        grid-template-columns: 1.5fr 1fr 1fr !important;
+    }
+}
+@media (max-width: 992px) {
+    .footer-main-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 40px !important;
+    }
+}
+@media (max-width: 600px) {
+    .footer-main-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .footer-bottom-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-legal {
+        justify-content: center;
+    }
+}
+
+/* 8. MacBook / High DPI Fixes */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* 9. Modal/Gallery Mobile Fixes */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95% !important;
+        padding: 30px 20px !important;
+    }
+    .modal-body {
+        grid-template-columns: 1fr !important;
+    }
+}
