@@ -1,4 +1,4 @@
-﻿// Sticky Navbar
+// Sticky Navbar
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
     if (nav) {
@@ -276,3 +276,53 @@ window.onclick = function(event) {
     if (event.target == modal) closeProjectFolder();
 };
 
+// Premium Enhancements Logic
+
+// 1. Custom Cursor
+const cursor = document.querySelector('.custom-cursor');
+if (cursor) {
+    window.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    const hoverables = document.querySelectorAll('a, button, .portfolio-card, .work-item, .creator-card');
+    hoverables.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+}
+
+// 2. Scroll Progress & Back to Top
+const progress = document.getElementById('scroll-progress');
+const btt = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (window.scrollY / totalHeight) * 100;
+    
+    if (progress) progress.style.width = scrollPercent + '%';
+    
+    if (btt) {
+        if (window.scrollY > 500) {
+            btt.classList.add('visible');
+        } else {
+            btt.classList.remove('visible');
+        }
+    }
+});
+
+if (btt) {
+    btt.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// 3. Parallax Effect (Subtle)
+window.addEventListener('scroll', () => {
+    const muggus = document.querySelectorAll('.muggu-bg');
+    muggus.forEach(m => {
+        const speed = 0.2;
+        m.style.transform = `translateY(${window.scrollY * speed}px)`;
+    });
+});
