@@ -40,6 +40,21 @@
             transform: translateX(-5px);
             background: var(--accent);
         }
+        .portfolio-grid .work-item {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .portfolio-grid .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(198, 165, 92, 0.2);
+        }
+        /* CTA Section */
+        .page-cta {
+            padding: 100px 8%;
+            background: var(--bg-soft);
+            text-align: center;
+            margin-top: 80px;
+        }
     </style>
 </head>
 <body>
@@ -49,28 +64,47 @@
     </a>
 
     <section style="padding: 120px 8%; min-height: 100vh;">
-        <div style="text-align: center; margin-bottom: 60px;">
+        <div class="reveal" style="text-align: center; margin-bottom: 60px;">
             <i class="fas fa-pen-nib" style="font-size: 4rem; color: var(--accent); margin-bottom: 1.5rem;"></i>
             <h1 style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">Logos & Posters</h1>
             <div class="accent-line" style="margin: 0 auto;"></div>
         </div>
 
         <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_1.jpg" alt="Logo 1" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_2.jpg" alt="Logo 2" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_3.jpg" alt="Logo 3" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_4.jpg" alt="Logo 4" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_5.jpg" alt="Logo 5" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_6.jpg" alt="Logo 6" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_7.jpg" alt="Logo 7" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_8.jpg" alt="Logo 8" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_9.jpg" alt="Logo 9" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_10.jpg" alt="Logo 10" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            <div class="work-item" style="border-radius: 15px; overflow: hidden; aspect-ratio: 1/1; background: #f8f9fa;"><img src="logo_11.jpg" alt="Logo 11" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_1.jpg" alt="Premium Branding 1" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_2.jpg" alt="Vayuhara Concept 2" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_3.jpg" alt="Digital Poster 3" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_4.jpg" alt="Creative Identity 4" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_5.jpg" alt="Minimalist Logo 5" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_6.jpg" alt="Brand Identity 6" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_7.jpg" alt="Graphic Concept 7" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_8.jpg" alt="Modern Poster 8" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_9.jpg" alt="Premium Art Concept 9" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_10.jpg" alt="Social Creative 10" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="logo_11.jpg" alt="MAD X Concept 11" style="width: 100%; height: 100%; object-fit: cover;"></div>
         </div>
     </section>
 
+    <section class="page-cta reveal">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Ready to elevate your brand?</h2>
+        <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2.5rem;">Let’s discuss your next project and bring your vision to life.</p>
+        <a href="index.html#contact" class="btn btn-primary" style="padding: 1.2rem 3rem;">Start a Project</a>
+    </section>
+
     <!-- Custom JS -->
+    <script>
+        function openLightbox(src) {
+            const lb = document.createElement('div');
+            lb.style.cssText = `position: fixed; inset: 0; background: rgba(11, 18, 32, 0.95); z-index: 10000; display: flex; align-items: center; justify-content: center; cursor: zoom-out; opacity: 0; transition: opacity 0.3s ease;`;
+            lb.innerHTML = `<img src="${src}" style="max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">`;
+            lb.onclick = () => {
+                lb.style.opacity = '0';
+                setTimeout(() => lb.remove(), 300);
+            };
+            document.body.appendChild(lb);
+            setTimeout(() => lb.style.opacity = '1', 10);
+        }
+    </script>
     <script src="main.js"></script>
 </body>
 </html>

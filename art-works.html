@@ -15,10 +15,11 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: var(--bg-white);
         }
         h1 {
             font-family: 'Sora', sans-serif;
-         }
+        }
         .back-btn {
             position: fixed;
             top: 2rem;
@@ -27,7 +28,7 @@
             background: var(--primary);
             color: white;
             border-radius: 8px;
-            font-weight: 700;
+            font-weight: 500;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -39,6 +40,20 @@
             transform: translateX(-5px);
             background: var(--accent);
         }
+        .portfolio-grid .work-item {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .portfolio-grid .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(198, 165, 92, 0.2);
+        }
+        .page-cta {
+            padding: 100px 8%;
+            background: var(--bg-soft);
+            text-align: center;
+            margin-top: 80px;
+        }
     </style>
 </head>
 <body>
@@ -48,41 +63,58 @@
     </a>
 
     <section style="padding: 120px 8%; min-height: 100vh;">
-        <div style="text-align: center; margin-bottom: 60px;">
+        <div class="reveal" style="text-align: center; margin-bottom: 60px;">
             <i class="fas fa-palette" style="font-size: 4rem; color: var(--accent); margin-bottom: 1.5rem;"></i>
             <h1 style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">Art Works</h1>
             <div class="accent-line" style="margin: 0 auto;"></div>
         </div>
 
         <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
-            <!-- Artworks Grid -->
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000944520.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000944521.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945619.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945620.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945621.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945622.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945623.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945624.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945627.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945628.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945629.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945631.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945633.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945634.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945635.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945637.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945638.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945639.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945641.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000945755.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000946402.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="1000947400.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="work-item" style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;"><img src="47845.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000944520.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000944521.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945619.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945620.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945621.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945622.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945623.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945624.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945627.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945628.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945629.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945631.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945633.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945634.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945635.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945637.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945638.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945639.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945641.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000945755.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000946402.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="1000947400.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="work-item reveal" onclick="openLightbox(this.querySelector('img').src)"><img src="47845.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
         </div>
     </section>
 
-    <!-- Custom JS (Just in case) -->
+    <section class="page-cta reveal">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Need custom artwork?</h2>
+        <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2.5rem;">Let’s create something masterpiece together.</p>
+        <a href="index.html#contact" class="btn btn-primary" style="padding: 1.2rem 3rem;">Start a Project</a>
+    </section>
+
+    <script>
+        function openLightbox(src) {
+            const lb = document.createElement('div');
+            lb.style.cssText = `position: fixed; inset: 0; background: rgba(11, 18, 32, 0.95); z-index: 10000; display: flex; align-items: center; justify-content: center; cursor: zoom-out; opacity: 0; transition: opacity 0.3s ease;`;
+            lb.innerHTML = `<img src="${src}" style="max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">`;
+            lb.onclick = () => {
+                lb.style.opacity = '0';
+                setTimeout(() => lb.remove(), 300);
+            };
+            document.body.appendChild(lb);
+            setTimeout(() => lb.style.opacity = '1', 10);
+        }
+    </script>
     <script src="main.js"></script>
 </body>
 </html>
