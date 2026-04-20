@@ -498,37 +498,10 @@ section {
 .portfolio-card.folder-clickable:hover {
     transform: translateY(-8px);
     box-shadow: 0 25px 50px rgba(198, 165, 92, 0.2);
-    background: var(--bg-soft);
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--accent);
+    background: #FFFEFA;
 }
 
-/* --- PREMIUM ENHANCEMENTS --- */
 
-/* Sparkle Cursor */
-.sparkle {
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    transform: translate(-50%, -50%) scale(1);
-    animation: sparkle-fade 0.7s ease-out forwards;
-}
-
-@keyframes sparkle-fade {
-    0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
-}
-
-@media (max-width: 768px) {
-    .sparkle { display: none; }
-}
 
 /* Scroll Progress Bar */
 #scroll-progress {
@@ -1034,10 +1007,10 @@ section {
 /* 1. Master Reveal Engine */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(18px);
     transition:
-        opacity 1.5s cubic-bezier(0.2, 1, 0.3, 1),
-        transform 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+        opacity 0.6s ease,
+        transform 0.6s ease;
     will-change: opacity, transform;
 }
 

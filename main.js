@@ -278,40 +278,6 @@ window.onclick = function(event) {
 
 // Premium Enhancements Logic
 
-// 1. Sparkle Trail Cursor
-const sparkleColors = ['#C6A55C', '#e1c16e', '#f5e09a', '#fff3c4', '#a07830'];
-let lastSparkleTime = 0;
-
-window.addEventListener('mousemove', (e) => {
-    const now = Date.now();
-    if (now - lastSparkleTime < 30) return; // throttle
-    lastSparkleTime = now;
-
-    const count = 3;
-    for (let i = 0; i < count; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-
-        const size = Math.random() * 8 + 4;
-        const offsetX = (Math.random() - 0.5) * 20;
-        const offsetY = (Math.random() - 0.5) * 20;
-        const color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
-        const duration = Math.random() * 400 + 400;
-
-        sparkle.style.cssText = `
-            left: ${e.clientX + offsetX}px;
-            top: ${e.clientY + offsetY}px;
-            width: ${size}px;
-            height: ${size}px;
-            background: ${color};
-            animation-duration: ${duration}ms;
-            box-shadow: 0 0 ${size * 2}px ${color};
-        `;
-
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), duration);
-    }
-});
 
 // 2. Scroll Progress & Back to Top
 const progress = document.getElementById('scroll-progress');
