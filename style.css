@@ -83,15 +83,21 @@ a {
     transition: all 0.4s ease;
 }
 
+.pill-nav .logo img {
+    height: 45px;
+    transition: var(--transition);
+}
+
+/* Compact sticky header on scroll */
 .pill-nav.sticky {
     top: 10px;
+    padding: 8px 25px;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
 }
 
-.pill-nav .logo img {
-    height: 45px;
-    transition: var(--transition);
+.pill-nav.sticky .logo img {
+    height: 38px;
 }
 
 .pill-nav .nav-links {
@@ -228,15 +234,26 @@ section {
 
 /* Buttons */
 .btn {
-    padding: 1rem 2.5rem;
-    border-radius: 10px;
+    padding: 1.2rem 2.5rem; /* Increased vertical padding for better balance */
+    border-radius: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 12px;
-    line-height: 1;
+    line-height: 1.2;
+    width: auto;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Tactile feedback for mobile */
+.btn:active {
+    transform: scale(0.96);
+    filter: brightness(0.9);
 }
 
 .btn-primary {
@@ -329,6 +346,13 @@ section {
     color: var(--text-light);
     margin-bottom: 3rem;
     max-width: 650px;
+}
+
+.cta-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .center-cta {
@@ -1536,19 +1560,20 @@ section {
 
 @media (max-width: 768px) {
     .scattered-hero {
-        padding-top: 140px !important;
-        padding-bottom: 80px !important;
+        padding-top: 130px !important;
+        padding-bottom: 70px !important;
     }
     .cta-group {
+        display: flex; /* Explicitly set display: flex */
         flex-direction: column;
         width: 100%;
-        max-width: 300px;
-        margin-left: auto;
-        margin-right: auto;
+        max-width: 320px;
+        margin: 0 auto;
+        gap: 15px; /* Spacing to prevent overlap */
     }
     .btn {
         width: 100%;
-        text-align: center;
+        padding: 1.1rem 2rem; /* Optimized for mobile */
     }
 }
 
@@ -1596,11 +1621,17 @@ section {
 @media (max-width: 480px) {
     .pill-nav {
         padding: 8px 15px !important;
-        width: 95% !important;
+        width: 92% !important;
     }
+
     .pill-nav .logo img {
         height: 35px !important;
     }
+
+    .pill-nav.sticky .logo img {
+        height: 32px !important;
+    }
+
     .nav-cta {
         display: none !important; /* Hide CTA on very small phones to save space */
     }
