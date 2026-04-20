@@ -72,6 +72,18 @@
     </section>
 
     <!-- Custom JS -->
+    <script>
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.addEventListener('play', () => {
+                videos.forEach(otherVideo => {
+                    if (otherVideo !== video) {
+                        otherVideo.pause();
+                    }
+                });
+            });
+        });
+    </script>
     <script src="main.js"></script>
 </body>
 </html>
