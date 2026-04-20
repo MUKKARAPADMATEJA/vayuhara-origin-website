@@ -278,50 +278,40 @@ window.onclick = function(event) {
 
 // Premium Enhancements Logic
 
-// 1. Custom Cursor (Dot + Ring)
-const cursor = document.querySelector('.custom-cursor');
-const cursorDot = document.querySelector('.cursor-dot');
+// 1. Sparkle Trail Cursor
+const sparkleColors = ['#C6A55C', '#e1c16e', '#f5e09a', '#fff3c4', '#a07830'];
+let lastSparkleTime = 0;
 
-if (cursor && cursorDot) {
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
+window.addEventListener('mousemove', (e) => {
+    const now = Date.now();
+    if (now - lastSparkleTime < 30) return; // throttle
+    lastSparkleTime = now;
 
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        // Dot follows instantly
-        cursorDot.style.left = mouseX + 'px';
-        cursorDot.style.top = mouseY + 'px';
-    });
+    const count = 3;
+    for (let i = 0; i < count; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
 
-    // Ring follows with a smooth delay
-    const animateCursor = () => {
-        const dx = mouseX - cursorX;
-        const dy = mouseY - cursorY;
-        
-        cursorX += dx * 0.15;
-        cursorY += dy * 0.15;
-        
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        
-        requestAnimationFrame(animateCursor);
-    };
-    animateCursor();
+        const size = Math.random() * 8 + 4;
+        const offsetX = (Math.random() - 0.5) * 20;
+        const offsetY = (Math.random() - 0.5) * 20;
+        const color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
+        const duration = Math.random() * 400 + 400;
 
-    const hoverables = document.querySelectorAll('a, button, .portfolio-card, .work-item, .creator-card, .cta-group .btn');
-    hoverables.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('hover');
-            cursorDot.classList.add('hover');
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover');
-            cursorDot.classList.remove('hover');
-        });
-    });
-}
+        sparkle.style.cssText = `
+            left: ${e.clientX + offsetX}px;
+            top: ${e.clientY + offsetY}px;
+            width: ${size}px;
+            height: ${size}px;
+            background: ${color};
+            animation-duration: ${duration}ms;
+            box-shadow: 0 0 ${size * 2}px ${color};
+        `;
+
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), duration);
+    }
+});
 
 // 2. Scroll Progress & Back to Top
 const progress = document.getElementById('scroll-progress');

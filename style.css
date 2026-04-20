@@ -508,42 +508,26 @@ section {
 
 /* --- PREMIUM ENHANCEMENTS --- */
 
-/* Custom Cursor */
-.custom-cursor {
-    width: 30px;
-    height: 30px;
-    border: 1px solid var(--accent);
-    border-radius: 50%;
+/* Sparkle Cursor */
+.sparkle {
     position: fixed;
     pointer-events: none;
     z-index: 10000;
-    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-    mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
-}
-
-.cursor-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 10001;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease;
+    background: var(--accent);
+    transform: translate(-50%, -50%) scale(1);
+    animation: sparkle-fade 0.7s ease-out forwards;
 }
 
-.custom-cursor.hover {
-    width: 60px;
-    height: 60px;
-    background: rgba(198, 165, 92, 0.1);
-    border-color: var(--accent);
-    border-width: 2px;
+@keyframes sparkle-fade {
+    0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
 }
 
-.cursor-dot.hover {
-    transform: translate(-50%, -50%) scale(0);
+@media (max-width: 768px) {
+    .sparkle { display: none; }
 }
 
 /* Scroll Progress Bar */
