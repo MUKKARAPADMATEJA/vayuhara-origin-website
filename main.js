@@ -278,18 +278,48 @@ window.onclick = function(event) {
 
 // Premium Enhancements Logic
 
-// 1. Custom Cursor
+// 1. Custom Cursor (Dot + Ring)
 const cursor = document.querySelector('.custom-cursor');
-if (cursor) {
+const cursorDot = document.querySelector('.cursor-dot');
+
+if (cursor && cursorDot) {
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
     window.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Dot follows instantly
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
     });
 
-    const hoverables = document.querySelectorAll('a, button, .portfolio-card, .work-item, .creator-card');
+    // Ring follows with a smooth delay
+    const animateCursor = () => {
+        const dx = mouseX - cursorX;
+        const dy = mouseY - cursorY;
+        
+        cursorX += dx * 0.15;
+        cursorY += dy * 0.15;
+        
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        
+        requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
+
+    const hoverables = document.querySelectorAll('a, button, .portfolio-card, .work-item, .creator-card, .cta-group .btn');
     hoverables.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('hover');
+            cursorDot.classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+            cursorDot.classList.remove('hover');
+        });
     });
 }
 
