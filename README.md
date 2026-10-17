@@ -26,5 +26,4 @@ A professional, modern, and clean digital creative agency website for **VAYUHARA
 2.  Open `index.html` in any modern web browser to view the project.
 3.  For live development, we recommend using a local server (like "Live Server" for VS Code).
 
----
-**Crafted with 🧡 by Antigravity**
+deployed website : https://vayuharaorigin.vercel.app/
